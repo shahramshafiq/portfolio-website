@@ -147,7 +147,7 @@ body.uv .board-frame{
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.22 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
     linear-gradient(135deg,#1a1745,#0e0b2e);
 }
-#board{position:relative;width:100%;height:2560px;overflow:hidden;transform-style:preserve-3d}
+#board{position:relative;width:100%;height:2700px;overflow:hidden;transform-style:preserve-3d}
 #light{position:absolute;inset:0;pointer-events:none;z-index:30;
   background:radial-gradient(460px circle at var(--lx,50%) var(--ly,20%),rgba(255,214,150,.15),rgba(0,0,0,.4) 78%)}
 body.uv #light{background:radial-gradient(430px circle at var(--lx,50%) var(--ly,20%),rgba(125,249,255,.12),rgba(2,2,14,.6) 78%)}
@@ -269,6 +269,33 @@ body.uv #dossier{background:rgba(3,2,16,.85)}
 .form-result.err{display:block;color:var(--red)}
 .received{border:3px solid #1e6b34;color:#1e6b34;display:inline-block;padding:6px 16px;font-size:14px;letter-spacing:3px;transform:rotate(-5deg)}
 
+/* ================================================================
+   OUTRO · CASE CLOSED  (scroll-scrubbed)
+================================================================ */
+#outro{height:260vh;position:relative;background:#080604}
+.ostick{position:sticky;top:0;height:100vh;overflow:hidden;
+  background:
+    radial-gradient(ellipse 55% 40% at 50% 38%, rgba(255,208,130,.08), transparent 70%),
+    linear-gradient(180deg,#0e0b08,#080604 75%)}
+.bars{position:absolute;inset:-2% 0;transform:translateY(-103%);will-change:transform;z-index:3;
+  background:
+    linear-gradient(180deg, transparent 0 12vh, rgba(58,62,66,.9) 12vh calc(12vh + 12px), transparent calc(12vh + 12px) 78vh, rgba(58,62,66,.9) 78vh calc(78vh + 12px), transparent calc(78vh + 12px)),
+    repeating-linear-gradient(90deg, transparent 0 60px, #3c4147 60px 68px, #23272b 68px 74px, #14171a 74px 78px, transparent 78px 138px);
+  filter:drop-shadow(6px 0 10px rgba(0,0,0,.6))}
+.stamp2{position:absolute;top:36%;left:50%;z-index:4;opacity:0;
+  transform:translate(-50%,-50%) rotate(0deg) scale(6);
+  font-size:clamp(38px,8.4vw,92px);letter-spacing:10px;color:#d64533;text-align:center;line-height:1.02;
+  border:6px solid #d64533;padding:14px 44px;white-space:nowrap;
+  text-shadow:0 0 34px rgba(214,69,51,.35);box-shadow:inset 0 0 34px rgba(214,69,51,.14), 0 0 60px rgba(0,0,0,.5);
+  will-change:transform,opacity}
+.osign{position:absolute;left:0;right:0;top:62%;z-index:4;text-align:center;color:#cfc4b2;opacity:0;transform:translateY(30px);padding:0 20px}
+.osign .big{font-family:'Caveat',cursive;font-size:clamp(24px,3.6vw,36px);color:#e8b46a}
+.osign .small{font-size:11.5px;letter-spacing:3px;color:#8d7c60;margin-top:10px;text-transform:uppercase}
+.obtns{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.obtns button{background:transparent;border:2px solid #6b5433;color:#e8b46a;font-size:11px;letter-spacing:2px;padding:11px 20px;cursor:pointer;transition:all .25s;text-transform:uppercase}
+.obtns button:hover{border-color:#e8b46a;box-shadow:0 0 18px rgba(232,180,106,.25)}
+.obtns button:focus-visible{outline:2px solid #e8b46a;outline-offset:3px}
+
 footer{max-width:1380px;margin:0 auto;padding:8px 14px 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#a68955;font-size:10.5px;letter-spacing:2px}
 footer a{color:#e8b46a;text-decoration:none;border-bottom:1px dashed #6b5433;padding:8px 2px;display:inline-block}
 footer a:hover{color:#fff}
@@ -293,8 +320,13 @@ body.uv footer{color:#4d54a8}body.uv footer a{color:var(--uvink)}
   .controls{margin-left:0}
   .case-head .hint2{text-align:left;margin-left:0;max-width:none}
   #intro{height:220vh}
+  #outro{height:200vh}
 }
 @media (prefers-reduced-motion:reduce){
+  #outro{height:100vh}
+  .bars{transform:translateY(0) !important}
+  .stamp2{opacity:1 !important;transform:translate(-50%,-50%) rotate(-12deg) scale(1) !important}
+  .osign{opacity:1 !important;transform:none !important}
   .folder,.dropin{animation:none !important}
   .prehide{opacity:1}
   .item.polaroid .photo img{animation:none}
@@ -385,6 +417,22 @@ body.uv footer{color:#4d54a8}body.uv footer a{color:var(--uvink)}
 </footer>
 </div>
 
+<!-- ============ OUTRO: CASE CLOSED ============ -->
+<section id="outro" aria-label="Outro: case closed">
+  <div class="ostick">
+    <div class="bars" id="bars" aria-hidden="true"></div>
+    <div class="stamp2" id="stamp2">CASE<br>CLOSED</div>
+    <div class="osign" id="osign">
+      <p class="big">you read the whole file, detective. the department notices things like that.</p>
+      <p class="small">the evidence stays pinned &middot; the tip line stays open &middot; the subject remains at large (and hireable)</p>
+      <div class="obtns">
+        <button id="reopen">REOPEN THE CASE ↑</button>
+        <button id="lasttip">FILE A TIP ▸</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- dossier -->
 <div id="dossier" role="dialog" aria-modal="true" aria-label="Case file">
   <div class="folder">
@@ -402,9 +450,9 @@ const GH="https://github.com/shahramshafiq/";
 
 /* ================= data ================= */
 const ZONES=[
- {y:14.2,label:'SECTION A · <b>FIELD REPORTS</b> · THE EXPERIENCE'},
- {y:41.5,label:'SECTION B · <b>EXHIBITS</b> · THE PROJECTS'},
- {y:79.2,label:'SECTION C · <b>RECORDS &amp; INSTRUMENTS</b>'}
+ {y:14.2,after:'uvnote',label:'SECTION A · <b>FIELD REPORTS</b> · THE EXPERIENCE'},
+ {y:41.5,after:'arrazzaq',label:'SECTION B · <b>EXHIBITS</b> · THE PROJECTS'},
+ {y:79.2,after:'galaxy',label:'SECTION C · <b>RECORDS &amp; INSTRUMENTS</b>'}
 ];
 const items=[
  /* ---- zone 0: subject ---- */
@@ -434,13 +482,13 @@ const items=[
    verdict:'CASE CLOSED · PRESENTED'}},
  {id:'jcoderz',kind:'manila',x:13,y:28.5,rot:-1,z:30,tag:'FIELD REPORT C',title:'JuniorCoderz',
   body:'STEM Trainer, Mar 2026 to present. Python, Scratch, Tinkercad, electronics, robotics. Ages 6 to 16.',
-  dossier:{tab:'FIELD REPORT C',title:'JuniorCoderz',sub:'STEM Trainer, Mar 2026 to present · Islamabad',
-   meta:'ONGOING ASSIGNMENT · STUDENTS AGED 6 TO 16, LOCAL AND ABROAD',
-   facts:['Teaches Python, Scratch, Tinkercad, electronics, and robotics through weekly sessions','Students include kids based abroad, taught through online one-on-one classes','Designs lesson plans and hands-on projects adapted to each student’s pace','Sends monthly progress feedback to parents covering strengths and next goals'],
+  dossier:{tab:'FIELD REPORT C',title:'JuniorCoderz',sub:'STEM Trainer, Mar 2026 to present',
+   meta:'ONGOING ASSIGNMENT · INTERNATIONAL STUDENTS AGED 6 TO 16',
+   facts:['Teaches Python, Scratch, Tinkercad, electronics, and robotics through weekly sessions','Teaches international students, mainly in the US, Canada, and the Middle East, through online one-on-one classes','Designs lesson plans and hands-on projects adapted to each student’s pace','Sends monthly progress feedback to parents covering strengths and next goals'],
    verdict:'ACTIVE DUTY'}},
  {id:'arrazzaq',kind:'file',x:57,y:28.5,rot:2,z:22,tag:'FIELD REPORT D',title:'Ar Razzaq Foundation',
-  body:'Director, Digital Volunteers Team. 2022 to 2024. Led ~50 volunteers.',
-  dossier:{tab:'FIELD REPORT D',title:'Ar Razzaq Foundation',sub:'Director, Digital Volunteers Team · 2022 to 2024',
+  body:'Director, Digital Volunteers Team (Volunteer). 2022 to 2024. Led ~50 volunteers.',
+  dossier:{tab:'FIELD REPORT D',title:'Ar Razzaq Foundation',sub:'Director, Digital Volunteers Team (Volunteer) · 2022 to 2024',
    meta:'EXECUTIVE BOARD MEMBER · COMMUNITY OPERATIONS',
    facts:['Assembled and led a team of around 50 digital volunteers coordinating district-level community drives','Doubled the foundation’s social media reach through structured growth targets assigned across the team'],
    verdict:'SERVICE RECORD CLEAN'}},
@@ -496,22 +544,28 @@ const items=[
    links:[{href:GH+'Railway-Management-System-using-Data-Structures',label:'GITHUB ↗'}],
    verdict:'ZERO STL'}},
  {id:'galaxy',kind:'index',x:53,y:68.5,rot:1.5,z:18,tag:'MINOR EXHIBIT',title:'Galaxy Wars',
-  body:'2D space shooter in C++ and SFML. OOP course project, UML and all.',
+  body:'2D space shooter in C++ and SFML. Sprites, sound, UML and all.',
   dossier:{tab:'MINOR EXHIBIT',title:'Galaxy Wars',sub:'object-oriented, literally',
    meta:'MO: C++ · SFML · VISUAL STUDIO',
-   facts:['2D space shooter built for the OOP course at FAST (Fall 2025)','Full sprite, audio, and font asset pipeline loaded at runtime','Documented with UML diagrams and a formal project report'],
+   facts:['2D space shooter with player and enemy ships, built in C++ and SFML','Full sprite, audio, and font asset pipeline loaded at runtime','Documented with UML diagrams and a formal project report'],
    links:[{href:GH+'galaxy-wars-game',label:'GITHUB ↗'}],
    verdict:'DIRECT HIT'}},
 
  /* ---- zone 3: records ---- */
- {id:'background',kind:'manila',x:16,y:82.5,rot:1,z:34,tag:'BACKGROUND CHECK',title:'Background Check',
-  body:'Education, honors, certifications, languages. All records pulled and verified.',
+ {id:'education',kind:'manila',x:6,y:82.3,rot:1,z:34,tag:'EDUCATION RECORDS',title:'Education Records',
+  body:'FAST NUCES, Roots International, Cadet College Hasan Abdal. All records pulled and verified.',
   secret:{txt:'scholarship kid. earned it.',top:'24%',left:'6%'},
-  dossier:{tab:'BACKGROUND CHECK',title:'Records: Clean',sub:'education, honors, and papers, all verified',
-   meta:'SOURCES: FAST NUCES · ROOTS INTERNATIONAL · CADET COLLEGE HASAN ABDAL · LINKEDIN',
-   facts:['FAST NUCES Islamabad: BS Computer Science, CGPA 3.66 (2024 to 2028)','Roots International: A-Levels on a 90% merit scholarship; basketball team captain (2022 to 2024)','Cadet College Hasan Abdal: matriculation, 2022. Dorm Commander, MUN delegate with Best Position Papers award, article writer for the college magazine','Duke of Edinburgh Bronze Award · Round Square international event participant','Certifications: Google Generative AI · Google Data Analytics · Microsoft MS-900 · Data Science Foundations · Game Development with PyGame (GUVI, IIT Madras RP) · Google Fundamentals of Digital Marketing','Languages: English, Urdu, Punjabi, Hindi, German (beginner)'],
+  dossier:{tab:'EDUCATION RECORDS',title:'Schooling: Verified',sub:'three institutions, one clean paper trail',
+   meta:'SOURCES: FAST NUCES · ROOTS INTERNATIONAL · CADET COLLEGE HASAN ABDAL',
+   facts:['FAST NUCES Islamabad: BS Computer Science, CGPA 3.66 (2024 to 2028)','Roots International: A-Levels on a 90% merit scholarship; basketball team captain (2022 to 2024)','Cadet College Hasan Abdal: matriculation, 2022. Dorm Commander, MUN delegate, article writer for the college magazine'],
    verdict:'RECORDS VERIFIED'}},
- {id:'skills',kind:'manila',x:56,y:82.5,rot:-2,z:30,tag:'EVIDENCE BAG',title:'The Toolbox',
+ {id:'honors',kind:'manila',x:37,y:82.3,rot:-1.5,z:32,tag:'COMMENDATIONS',title:'Commendations',
+  body:'Awards, certifications, and languages on record. All checked.',
+  dossier:{tab:'COMMENDATIONS',title:'Awards &amp; Papers',sub:'the drawer of medals and certificates',
+   meta:'SOURCES: LINKEDIN · AWARDING BODIES',
+   facts:['Duke of Edinburgh Bronze Award','Best Position Papers, Abdalian MUN','90% merit scholarship, Roots International','Round Square international event participant','Certifications: Google Generative AI · Google Data Analytics · Microsoft MS-900 · Data Science Foundations · Game Development with PyGame (GUVI) · Google Fundamentals of Digital Marketing','Languages: English, Urdu, Punjabi, Hindi, German (beginner)'],
+   verdict:'DECORATED'}},
+ {id:'skills',kind:'manila',x:68,y:82.3,rot:-2,z:30,tag:'EVIDENCE BAG',title:'The Toolbox',
   body:'Recovered instruments. Fingerprints everywhere.',
   dossier:{tab:'EVIDENCE BAG',title:'Recovered Instruments',sub:'each one shows heavy use',
    meta:'ANALYSIS COMPLETE · JUL 2026',
@@ -519,7 +573,7 @@ const items=[
    verdict:'PRINTS MATCH'}},
 
  /* ---- tip line ---- */
- {id:'contact',kind:'tipline',x:38,y:93,rot:-1,z:36,
+ {id:'contact',kind:'tipline',x:38,y:90.6,rot:-1,z:36,
   secret:{txt:'he replies fast. try it.',top:'6%',left:'4%'},
   dossier:{tab:'TIP LINE',title:'Call It In',sub:'lines open. reward: one very good engineer.',
    meta:'RESPONSE TIME: UNDER 1 DAY · ALL TIPS READ PERSONALLY',
@@ -531,7 +585,7 @@ const links=[
  ['suspect','octathorn'],['suspect','pmw'],['suspect','jcoderz',true],['suspect','motive',true],
  ['octathorn','devmind'],['octathorn','chw',true],['pmw','citymind',true],
  ['devmind','chw'],['innsight','galaxy',true],['ironnexus','mario',true],
- ['suspect','background',true],['background','skills',true],['skills','contact'],['pkrusd','contact',true]
+ ['suspect','education',true],['education','honors',true],['honors','skills',true],['skills','contact'],['pkrusd','contact',true]
 ];
 
 /* ================= render ================= */
@@ -568,12 +622,14 @@ items.forEach((it,idx)=>{
   board.appendChild(d);
   els[it.id]=d;
 });
-/* zone labels */
+/* zone labels: absolute on desktop, correct DOM order for mobile flow */
 ZONES.forEach(z=>{
   const l=document.createElement('div');
   l.className='zonelabel';l.style.top=z.y+'%';
   l.innerHTML=z.label;
-  board.appendChild(l);
+  const anchor=els[z.after];
+  if(anchor&&anchor.nextSibling)board.insertBefore(l,anchor.nextSibling);
+  else board.appendChild(l);
 });
 /* one evidence tape between zones */
 (function decor(){
@@ -810,8 +866,36 @@ function scrubDoor(){
   stick.style.opacity=String(fade);
   stick.style.pointerEvents=fade<.15?'none':'auto';
 }
-addEventListener('scroll',scrubDoor,{passive:true});
-scrubDoor();
+/* ---------- outro: bars drop, stamp slams, sign-off ---------- */
+const outro=document.getElementById('outro');
+const bars=document.getElementById('bars');
+const stamp2=document.getElementById('stamp2');
+const osign=document.getElementById('osign');
+const easeOutC=t=>1-Math.pow(1-t,3);
+function scrubOutro(){
+  if(reduce)return;
+  const h=outro.offsetHeight-innerHeight;
+  const p=clamp01((scrollY-outro.offsetTop)/(h||1));
+  const b=clamp01(p/.36);                       /* bars descend */
+  bars.style.transform=`translateY(${(-103+easeOutC(b)*103).toFixed(2)}%)`;
+  const s=clamp01((p-.4)/.28);                  /* stamp slams */
+  stamp2.style.opacity=String(s);
+  stamp2.style.transform=`translate(-50%,-50%) rotate(${(-12*easeOutC(s)).toFixed(1)}deg) scale(${(6-5*easeOutC(s)).toFixed(2)})`;
+  const t2=clamp01((p-.62)/.3);                 /* sign-off rises */
+  osign.style.opacity=String(t2);
+  osign.style.transform=`translateY(${(30-30*t2).toFixed(1)}px)`;
+}
+document.getElementById('reopen').addEventListener('click',()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'}));
+document.getElementById('lasttip').addEventListener('click',()=>openDossier('contact'));
+
+/* tab-blur easter egg */
+document.addEventListener('visibilitychange',()=>{
+  document.title=document.hidden?'COLD CASE — the board misses you':'The Shahram File';
+});
+
+function onScroll(){scrubDoor();scrubOutro()}
+addEventListener('scroll',onScroll,{passive:true});
+scrubDoor();scrubOutro();
 document.getElementById('skipintro').addEventListener('click',()=>{
   document.getElementById('casefile').scrollIntoView({behavior:reduce?'auto':'smooth'});
 });

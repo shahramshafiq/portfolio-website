@@ -12,6 +12,7 @@ everything the department has on me: field reports (experience), exhibits (proje
 - **Open the folders.** Click any card for its full confidential dossier.
 - **Find the UV lamp.** Some notes are written in invisible ink.
 - **File a tip.** The tip line at the bottom of the board delivers straight to my inbox.
+- **Scroll to the very end.** Every case gets closed eventually.
 
 ## Stack
 
