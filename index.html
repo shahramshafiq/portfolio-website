@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Shahram File</title>
+<meta name="description" content="Shahram Shafiq, AI automation and agentic systems. A portfolio filed as evidence: enter the evidence room, drag the cards, follow the red string, switch on the UV lamp.">
+<meta property="og:title" content="The Shahram File">
+<meta property="og:description" content="Enter the evidence room. Follow the red string.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='38' r='26' fill='%23c0392b'/><rect x='47' y='58' width='6' height='30' fill='%23555'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cork:#8a6844; --cork2:#75552f; --paper:#f3ecd9; --paper2:#e9dfc4;
+  --ink:#2b2620; --dim:#5c5344; --red:#c0392b; --manila:#e8d5a3; --manila2:#dcc688;
+  --uv:#0e0b2e; --uvink:#9db4ff; --uvglow:#7df9ff; --wall:#171310;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Special Elite',monospace; color:var(--ink);
+  background:#241a10; overflow-x:hidden; line-height:1.5;
+  transition:background .6s;
+}
+body.uv{background:#050418}
+.hand{font-family:'Caveat',cursive}
+button{font-family:inherit}
+
+/* ================================================================
+   INTRO · THE EVIDENCE ROOM DOOR  (scroll-scrubbed)
+================================================================ */
+#intro{height:300vh;position:relative;background:#0a0806}
+.stick{position:sticky;top:0;height:100vh;overflow:hidden;background:
+  radial-gradient(ellipse 60% 46% at 50% 30%, rgba(255,208,130,.10), transparent 70%),
+  linear-gradient(180deg,#141110,#0a0806 70%)}
+.room3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;perspective:1100px}
+.doorway{position:relative;width:min(430px,72vw);aspect-ratio:10/16;transform-style:preserve-3d;will-change:transform}
+/* concrete frame */
+.doorway .frame{position:absolute;inset:-26px -30px;background:
+  linear-gradient(135deg,#3a332c,#241f1a);
+  box-shadow:0 30px 80px rgba(0,0,0,.8), inset 0 0 24px rgba(0,0,0,.6);border-radius:4px}
+.doorway .darkness{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 50% 45%, #17110b 0%, #050302 75%)}
+.doorway .glimpse{position:absolute;inset:14% 20%;opacity:.15;filter:blur(3px);
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.54 0 0 0 0 0.41 0 0 0 0 0.26 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
+  linear-gradient(135deg,var(--cork),var(--cork2))}
+/* door panels */
+.panel3{position:absolute;top:0;bottom:0;width:50%;background:
+  linear-gradient(160deg,#4d5257 0%,#33383d 55%,#24282c 100%);
+  border:1px solid #1b1e21;transform-style:preserve-3d;backface-visibility:hidden;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.5)}
+.panel3.left{left:0;transform-origin:left center;border-right:2px solid #15181a}
+.panel3.right{right:0;transform-origin:right center;border-left:2px solid #15181a}
+.panel3 .window{position:absolute;top:12%;left:22%;right:22%;height:17%;
+  background:linear-gradient(145deg,rgba(190,215,225,.16),rgba(120,150,160,.06));
+  border:5px solid #23282b;box-shadow:inset 0 0 14px rgba(0,0,0,.7);
+  background-image:repeating-linear-gradient(45deg,transparent 0 7px,rgba(0,0,0,.28) 7px 8px),repeating-linear-gradient(-45deg,transparent 0 7px,rgba(0,0,0,.28) 7px 8px)}
+.panel3 .stencil{position:absolute;top:38%;width:100%;text-align:center;color:rgba(220,225,228,.5);
+  font-size:clamp(13px,2.4vw,20px);letter-spacing:5px}
+.panel3 .plate{position:absolute;bottom:26%;left:50%;transform:translateX(-50%);
+  background:#1d2023;color:#8a949b;font-size:9px;letter-spacing:2px;padding:4px 10px;border:1px solid #43494e}
+.panel3 .handle{position:absolute;top:49%;width:9px;height:15%;background:linear-gradient(90deg,#6b7278,#3c4247);border-radius:5px;box-shadow:0 3px 8px rgba(0,0,0,.6)}
+.panel3.left .handle{right:6%}
+.panel3.right .handle{left:6%}
+.panel3 .rivets{position:absolute;inset:3%;border:1px dashed rgba(140,150,158,.18)}
+/* signage */
+.doorsign{position:absolute;top:-72px;left:50%;transform:translateX(-50%);
+  background:#1d2023;border:2px solid #43494e;color:#c9d2d8;font-size:clamp(10px,1.6vw,13px);
+  letter-spacing:4px;padding:8px 22px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.doorsign b{color:#e8b46a}
+/* police tape */
+.tapeline{position:absolute;left:-14vw;right:-14vw;height:44px;display:flex;align-items:center;overflow:hidden;
+  background:repeating-linear-gradient(45deg,#e7c500 0 34px,#141110 34px 68px);
+  box-shadow:0 6px 18px rgba(0,0,0,.55);will-change:transform;z-index:5}
+.tapeline .words{white-space:nowrap;font-size:15px;letter-spacing:6px;color:#141110;font-weight:bold;
+  background:#e7c500;padding:3px 0;width:100%;text-align:center}
+.tape1{top:34%;transform:rotate(-7deg)}
+.tape2{top:56%;transform:rotate(6deg)}
+/* intro copy */
+.intro-copy{position:absolute;left:0;right:0;top:7vh;text-align:center;color:#cfc4b2;z-index:6}
+.intro-copy .k{font-size:11px;letter-spacing:5px;color:#e8b46a}
+.intro-copy h1{font-size:clamp(24px,4.6vw,44px);letter-spacing:5px;margin-top:10px;text-transform:uppercase;
+  text-shadow:0 4px 30px rgba(0,0,0,.8)}
+.intro-copy .sub{font-family:'Caveat',cursive;font-size:clamp(18px,2.6vw,24px);color:#b9a98d;margin-top:8px}
+.scroll-cue{position:absolute;bottom:5vh;left:0;right:0;text-align:center;color:#8d7c60;font-size:11px;letter-spacing:4px;z-index:6}
+.scroll-cue::after{content:'▼';display:block;margin-top:8px;animation:bob 1.6s ease infinite}
+@keyframes bob{50%{transform:translateY(7px)}}
+#skipintro{position:absolute;right:18px;bottom:18px;z-index:7;background:transparent;border:1px solid #554834;
+  color:#b9a98d;font-size:10px;letter-spacing:3px;padding:8px 14px;cursor:pointer;transition:all .25s}
+#skipintro:hover{border-color:#e8b46a;color:#e8b46a}
+/* dust motes in the doorway light */
+.mote{position:absolute;border-radius:50%;background:rgba(255,220,160,.5);filter:blur(1px);animation:float linear infinite}
+@keyframes float{from{transform:translateY(12vh)}to{transform:translateY(-14vh)}}
+
+/* ================================================================
+   CASE HEADER
+================================================================ */
+#casefile{position:relative;z-index:2;margin-top:-100vh;background:#241a10;transition:background .6s;
+  box-shadow:0 -40px 80px rgba(0,0,0,.55)}
+body.uv #casefile{background:#050418}
+.case-head{max-width:1380px;margin:26px auto 18px;padding:0 14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:var(--paper)}
+.case-head .badge{flex-shrink:0}
+.case-head .stack .no{color:#e8b46a;font-size:12px;letter-spacing:3px;display:block}
+.case-head h1{
+  font-size:clamp(22px,3.6vw,36px);letter-spacing:4px;text-transform:uppercase;position:relative;
+  text-shadow:calc(var(--cx,0)*4px) calc(var(--cy,0)*3px) 0 rgba(192,57,43,.55), calc(var(--cx,0)*-4px) calc(var(--cy,0)*-3px) 0 rgba(93,173,226,.45);
+}
+body.uv .case-head h1{color:var(--uvglow);text-shadow:0 0 18px rgba(125,249,255,.6)}
+.case-head .hint2{margin-left:auto;font-family:'Caveat',cursive;font-size:20px;color:#e8b46a;transform:rotate(-1deg);max-width:340px;text-align:right}
+body.uv .case-head .hint2{color:var(--uvink)}
+.controls{display:flex;gap:10px;margin-left:12px}
+.controls button{
+  background:transparent;border:2px solid #6b5433;color:#e8b46a;font-size:11px;letter-spacing:2px;
+  padding:8px 14px;cursor:pointer;transition:all .25s;text-transform:uppercase;
+}
+.controls button:hover{border-color:#e8b46a;box-shadow:0 0 18px rgba(232,180,106,.25)}
+.controls button.on{background:#e8b46a;color:#241a10;border-color:#e8b46a}
+.controls button:focus-visible{outline:2px solid #e8b46a;outline-offset:3px}
+body.uv .controls button{border-color:#3a3f8f;color:var(--uvglow)}
+body.uv .controls button.on{background:var(--uvglow);color:#050418;border-color:var(--uvglow);box-shadow:0 0 24px rgba(125,249,255,.5)}
+.badge svg{width:52px;height:52px;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.badge .unit{font-size:8px;letter-spacing:1.5px;color:#a68955;display:block;text-align:center;margin-top:3px}
+body.uv .badge .unit{color:var(--uvink)}
+
+/* ================================================================
+   THE BOARD
+================================================================ */
+.tilt-wrap{perspective:1700px;max-width:1420px;margin:0 auto;padding:0 14px 30px}
+.board-frame{
+  position:relative;border:22px solid #3d2a17;border-radius:6px;
+  box-shadow:0 30px 90px rgba(0,0,0,.7), inset 0 0 40px rgba(0,0,0,.5);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,225,170,.16), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.54 0 0 0 0 0.41 0 0 0 0 0.26 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg,var(--cork),var(--cork2));
+  transform-style:preserve-3d;
+  transform:rotateX(calc(var(--ty,0)*1deg)) rotateY(calc(var(--tx,0)*1deg));
+  transition:background .6s;
+  will-change:transform;
+}
+body.uv .board-frame{
+  border-color:#161233;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(90,110,255,.14), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.22 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg,#1a1745,#0e0b2e);
+}
+#board{position:relative;width:100%;height:2560px;overflow:hidden;transform-style:preserve-3d}
+#light{position:absolute;inset:0;pointer-events:none;z-index:30;
+  background:radial-gradient(460px circle at var(--lx,50%) var(--ly,20%),rgba(255,214,150,.15),rgba(0,0,0,.4) 78%)}
+body.uv #light{background:radial-gradient(430px circle at var(--lx,50%) var(--ly,20%),rgba(125,249,255,.12),rgba(2,2,14,.6) 78%)}
+#strings{position:absolute;inset:0;z-index:6;pointer-events:none}
+#strings path{stroke:var(--red);stroke-width:2.4;fill:none;opacity:.82;filter:drop-shadow(0 2px 2px rgba(0,0,0,.45));transition:stroke .4s,opacity .3s,stroke-width .2s}
+#strings path.dash{stroke-dasharray:7 5;opacity:.55}
+#strings path.lit{stroke:#ff6a52;opacity:1;stroke-width:3.4}
+body.uv #strings path{stroke:#5560ff;opacity:.65}
+body.uv #strings path.lit{stroke:var(--uvglow);opacity:1}
+#strings circle.knot{fill:#7c1f14;opacity:.9}
+body.uv #strings circle.knot{fill:#3a3f8f}
+
+/* zone labels: stenciled strips */
+.zonelabel{position:absolute;z-index:8;left:50%;transform:translateX(-50%) rotate(-.6deg);
+  background:#3b301f;color:#e8c88f;border:1px solid #57462b;
+  font-size:12px;letter-spacing:5px;padding:9px 26px;white-space:nowrap;
+  box-shadow:0 8px 20px rgba(0,0,0,.45)}
+.zonelabel b{color:#ff8a75}
+body.uv .zonelabel{background:#12103a;color:var(--uvink);border-color:#2c2a6e}
+.hypno{position:absolute;width:70px;height:70px;border-radius:50%;z-index:9;cursor:pointer;border:5px solid #2b2620;
+  background:repeating-conic-gradient(#2b2620 0 14deg, #f3ecd9 14deg 28deg);
+  box-shadow:0 8px 18px rgba(0,0,0,.5);animation:spin 14s linear infinite}
+.hypno::after{content:'';position:absolute;inset:24px;border-radius:50%;background:var(--red)}
+.hypno:focus-visible{outline:3px solid #e8b46a;outline-offset:3px}
+body.uv .hypno{animation-duration:3.5s;background:repeating-conic-gradient(#050418 0 14deg, var(--uvglow) 14deg 28deg);border-color:var(--uvglow)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hypno-tag{position:absolute;font-family:'Caveat',cursive;font-size:16px;color:#f3ecd9;transform:rotate(-5deg);z-index:9;text-shadow:0 2px 4px rgba(0,0,0,.6);pointer-events:none}
+body.uv .hypno-tag{color:var(--uvglow)}
+
+/* ================= pinned items ================= */
+.item{
+  position:absolute;z-index:10;width:272px;background:var(--paper);
+  padding:38px 20px 18px;cursor:grab;user-select:none;
+  box-shadow:0 12px 26px rgba(0,0,0,.5);
+  transition:box-shadow .25s,filter .5s;
+  transform:rotate(var(--rot,0deg)) translateZ(var(--z,22px));
+}
+.item:active{cursor:grabbing}
+.item:hover{box-shadow:0 22px 48px rgba(0,0,0,.65);z-index:20}
+.item:focus-visible{outline:3px solid #ffd27a;outline-offset:4px;z-index:20}
+body.uv .item{filter:brightness(.72) saturate(.6)}
+.item::before{content:'';position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:17px;height:17px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#ff8577,var(--red) 55%,#7c1f14);
+  box-shadow:0 4px 6px rgba(0,0,0,.55);z-index:3}
+.item::after{content:'';position:absolute;top:26px;left:50%;width:2px;height:9px;background:rgba(0,0,0,.3);transform:translateX(-50%)}
+.item .tag{position:absolute;top:9px;left:14px;font-size:10px;letter-spacing:2px;color:var(--red)}
+.item h3{font-size:16.5px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px}
+.item p{font-size:12.5px;color:var(--dim)}
+.item .hint{margin-top:9px;font-size:18px;color:var(--red);transform:rotate(-2deg)}
+.item.manila{background:linear-gradient(160deg,var(--manila),var(--manila2))}
+.item.manila .tab{position:absolute;top:-13px;left:22px;background:var(--manila);padding:2px 16px;font-size:10px;letter-spacing:2px;border-radius:4px 4px 0 0;box-shadow:0 -3px 6px rgba(0,0,0,.15)}
+.item.manila .tag{display:none}
+.item .stamp{position:absolute;right:10px;bottom:10px;border:2px solid var(--red);color:var(--red);font-size:10px;letter-spacing:2px;padding:2px 7px;transform:rotate(-8deg);opacity:.85}
+.item.polaroid{background:#fdfdf8;padding:14px 14px 10px;width:238px}
+.item.polaroid .photo{background:#242220;height:188px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.item.polaroid .photo .pwrap{width:152px;height:152px;border-radius:50%;overflow:hidden;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.55)}
+.item.polaroid .photo img{width:118%;height:118%;object-fit:cover;margin:-9%;display:block;
+  filter:sepia(.42) contrast(1.04) brightness(.97);
+  animation:develop 2.6s ease both}
+@keyframes develop{from{filter:sepia(1) contrast(.4) brightness(.12)}to{filter:sepia(.42) contrast(1.04) brightness(.97)}}
+.item.polaroid .cap{text-align:center;margin-top:9px;font-size:20px}
+.note{width:200px;background:#fff9a8;padding:30px 16px 14px;font-family:'Caveat',cursive;font-size:19px;line-height:1.3;color:#463c14}
+.note::before{background:radial-gradient(circle at 34% 30%,#9ecbff,#2563eb 55%,#123c8a)}
+.item.index{width:238px;background:repeating-linear-gradient(180deg,#fbf7ea 0 26px,#f3d9d3 26px 27px);padding:32px 16px 14px}
+.item.index h3{border-bottom-color:var(--red);font-size:14.5px}
+.item.index p{font-size:11.5px}
+.item.tipline{background:#f3ecd9;border:3px solid var(--red);width:310px;text-align:center;padding-top:42px}
+.item.tipline h3{border-bottom:none;color:var(--red);font-size:19px}
+.item.tipline .phone{font-size:13px;letter-spacing:1px;margin-top:4px}
+.secret{opacity:0;transition:opacity .8s;color:#8fe8ff !important;font-family:'Caveat',cursive;text-shadow:0 0 6px rgba(3,3,20,.9), 0 0 14px rgba(125,249,255,.9);pointer-events:none}
+body.uv .secret{opacity:1}
+.item .secret{position:absolute;font-size:21px;transform:rotate(-6deg);z-index:4}
+.tape{position:absolute;background:rgba(240,225,180,.85);border-left:1px dashed rgba(0,0,0,.2);border-right:1px dashed rgba(0,0,0,.2);
+  padding:3px 12px;font-size:9px;letter-spacing:3px;color:#6b5433;transform:rotate(-2deg);z-index:8;pointer-events:none;box-shadow:0 3px 8px rgba(0,0,0,.3);white-space:nowrap;overflow:hidden}
+
+.dropin{animation:dropin .55s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes dropin{from{opacity:0;transform:rotate(var(--rot,0deg)) translateZ(var(--z,22px)) translateY(-46px) scale(1.08)}to{opacity:1;transform:rotate(var(--rot,0deg)) translateZ(var(--z,22px)) translateY(0) scale(1)}}
+.prehide{opacity:0}
+
+/* ================= dossier modal ================= */
+#dossier{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(12,8,4,.8);backdrop-filter:blur(3px);padding:18px}
+#dossier.open{display:flex}
+body.uv #dossier{background:rgba(3,2,16,.85)}
+.folder{position:relative;width:min(700px,94vw);max-height:88vh;overflow-y:auto;background:linear-gradient(160deg,var(--manila),var(--manila2));padding:46px 40px 34px;box-shadow:0 40px 100px rgba(0,0,0,.8);animation:folderIn .35s cubic-bezier(.2,1.2,.4,1)}
+@keyframes folderIn{from{transform:translateY(40px) rotate(-1.5deg);opacity:0}to{transform:none;opacity:1}}
+.folder .ftab{position:absolute;top:0;left:36px;transform:translateY(-100%);background:var(--manila);padding:6px 26px;font-size:11px;letter-spacing:3px;border-radius:6px 6px 0 0}
+.folder h2{font-size:24px;letter-spacing:2px;text-transform:uppercase;border-bottom:3px double var(--ink);padding-bottom:10px;margin-bottom:6px}
+.folder .sub{font-family:'Caveat',cursive;font-size:22px;color:var(--red);margin-bottom:14px}
+.folder .meta{font-size:11px;letter-spacing:1.5px;color:var(--dim);margin-bottom:14px}
+.folder ul{list-style:none;margin:8px 0 14px}
+.folder li{font-size:14px;padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed rgba(43,38,32,.25)}
+.folder li::before{content:'☒';position:absolute;left:2px;color:var(--red)}
+.folder a{color:var(--red);font-weight:bold;text-decoration:underline}
+.folder .links{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 4px}
+.folder .links a{display:inline-block;border:2px solid var(--ink);color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:2px;padding:9px 16px;transition:all .2s}
+.folder .links a:hover{background:var(--ink);color:var(--manila)}
+.folder .links a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.folder .close{position:absolute;top:14px;right:16px;background:none;border:2px solid var(--ink);font-size:12px;letter-spacing:2px;padding:7px 14px;cursor:pointer;transition:all .2s}
+.folder .close:hover{background:var(--ink);color:var(--manila)}
+.folder .close:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.folder .verdict{border:3px solid var(--red);color:var(--red);display:inline-block;padding:5px 14px;font-size:13px;letter-spacing:3px;transform:rotate(-4deg);margin-top:10px}
+.tipform{display:grid;gap:12px;margin-top:16px;text-align:left}
+.tipform label{font-size:10px;letter-spacing:2px;color:var(--dim)}
+.tipform input,.tipform textarea{
+  width:100%;background:rgba(255,255,255,.55);border:none;border-bottom:2px solid var(--ink);
+  font-family:'Special Elite',monospace;font-size:15px;color:var(--ink);padding:9px 10px;resize:vertical;
+}
+.tipform input:focus-visible,.tipform textarea:focus-visible{outline:2px solid var(--red);outline-offset:1px;background:rgba(255,255,255,.85)}
+.tipform button{
+  justify-self:start;background:var(--red);color:#fff;border:none;font-size:13px;letter-spacing:3px;
+  padding:13px 30px;cursor:pointer;transition:all .25s;text-transform:uppercase;
+}
+.tipform button:hover{background:#96281c;box-shadow:0 8px 22px rgba(192,57,43,.4)}
+.tipform button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tipform button:disabled{opacity:.55;cursor:wait}
+.form-result{display:none;margin-top:14px;font-size:14px}
+.form-result.ok{display:block;color:#1e6b34}
+.form-result.err{display:block;color:var(--red)}
+.received{border:3px solid #1e6b34;color:#1e6b34;display:inline-block;padding:6px 16px;font-size:14px;letter-spacing:3px;transform:rotate(-5deg)}
+
+footer{max-width:1380px;margin:0 auto;padding:8px 14px 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#a68955;font-size:10.5px;letter-spacing:2px}
+footer a{color:#e8b46a;text-decoration:none;border-bottom:1px dashed #6b5433;padding:8px 2px;display:inline-block}
+footer a:hover{color:#fff}
+body.uv footer{color:#4d54a8}body.uv footer a{color:var(--uvink)}
+
+/* ================= desktop-only behaviors ================= */
+@media (min-width:1081px){
+  .item{touch-action:none}
+}
+/* ================= mobile / tablet flow ================= */
+@media (max-width:1080px){
+  #board{height:auto;padding:24px 12px 30px;display:flex;flex-direction:column;gap:26px;align-items:center}
+  .item{position:static !important;transform:rotate(var(--rot,0deg)) !important;width:min(320px,90%);cursor:pointer}
+  .item.tipline,.item.polaroid,.item.index{width:min(320px,90%)}
+  #strings,#light,.hypno,.hypno-tag,.tape{display:none}
+  .zonelabel{position:static;transform:rotate(-.6deg);order:0;margin:6px 0 -6px}
+  .board-frame{border-width:12px;transform:none !important}
+  .case-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .case-head .stack{min-width:0;max-width:100%}
+  .case-head .stack .no{font-size:10px;letter-spacing:2px}
+  .case-head h1{font-size:clamp(20px,6.4vw,26px);letter-spacing:2px;overflow-wrap:anywhere}
+  .controls{margin-left:0}
+  .case-head .hint2{text-align:left;margin-left:0;max-width:none}
+  #intro{height:220vh}
+}
+@media (prefers-reduced-motion:reduce){
+  .folder,.dropin{animation:none !important}
+  .prehide{opacity:1}
+  .item.polaroid .photo img{animation:none}
+  .hypno{animation:none}
+  .board-frame{transform:none !important}
+  .scroll-cue::after{animation:none}
+  #intro{height:100vh}
+  #casefile{margin-top:0}
+  .mote{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ INTRO: THE EVIDENCE ROOM ============ -->
+<section id="intro" aria-label="Intro: the evidence room door">
+  <div class="stick">
+    <div class="intro-copy" id="introCopy">
+      <div class="k">METRO DIV. · IMPOSSIBLE CASES UNIT · CLEARANCE GRANTED</div>
+      <h1>You've been assigned the case.</h1>
+      <div class="sub">everything they have on Shahram Shafiq is pinned to one board, downstairs.</div>
+    </div>
+    <div class="room3d">
+      <div class="doorway" id="doorway">
+        <div class="frame"></div>
+        <div class="darkness"></div>
+        <div class="glimpse" id="glimpse"></div>
+        <div class="doorsign">EVIDENCE ROOM <b>B-2</b> · AUTHORIZED PERSONNEL ONLY</div>
+        <div class="panel3 left" id="doorL">
+          <div class="rivets"></div><div class="window"></div>
+          <div class="stencil">EVID-</div>
+          <div class="plate">B2-L</div><div class="handle"></div>
+        </div>
+        <div class="panel3 right" id="doorR">
+          <div class="rivets"></div><div class="window"></div>
+          <div class="stencil">-ENCE</div>
+          <div class="plate">B2-R</div><div class="handle"></div>
+        </div>
+      </div>
+      <div class="tapeline tape1" id="tapeA"><div class="words">CRIME SCENE · DO NOT CROSS · CRIME SCENE · DO NOT CROSS · CRIME SCENE · DO NOT CROSS</div></div>
+      <div class="tapeline tape2" id="tapeB"><div class="words">POLICE LINE · DO NOT CROSS · POLICE LINE · DO NOT CROSS · POLICE LINE · DO NOT CROSS</div></div>
+    </div>
+    <div class="scroll-cue" id="scrollCue">SCROLL TO BREAK THE SEAL</div>
+    <button id="skipintro">SKIP INTRO ↓</button>
+  </div>
+</section>
+
+<!-- ============ CASE HEADER ============ -->
+<div id="casefile">
+<header class="case-head">
+  <span class="badge" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <path d="M50 8 L91 82 L77 82 L50 33 L36 58 L29 45 Z" fill="#e8b46a"/>
+      <path d="M91 82 L9 82 L16 69 L68 69 L54 44 L61 32 Z" fill="#c0392b"/>
+      <path d="M9 82 L50 8 L57 21 L30 69 L58 69 L51 82 Z" fill="#8a6844"/>
+    </svg>
+    <span class="unit">IMPOSSIBLE CASES UNIT</span>
+  </span>
+  <div class="stack">
+    <span class="no">OPERATION: SHIP IT · EYES ONLY</span>
+    <h1 id="chroma">The Shahram File</h1>
+  </div>
+  <div class="controls">
+    <button id="uvbtn" aria-pressed="false">UV LAMP: OFF</button>
+  </div>
+  <span class="hint2" id="headhint">drag the evidence. open the folders. follow the red string.</span>
+</header>
+
+<div class="tilt-wrap">
+  <div class="board-frame" id="frame">
+    <div id="board">
+      <svg id="strings" aria-hidden="true"></svg>
+      <div id="light" aria-hidden="true"></div>
+      <div class="hypno" id="hypno" role="button" tabindex="0" aria-label="Hidden switch: toggle the UV lamp"></div>
+      <span class="hypno-tag" id="hypnotag">don't stare.</span>
+      <!-- items injected -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>CASE ASSEMBLED JUL 2026 · NO STRING WAS HARMED</span>
+  <span>
+    <a href="mailto:shahramshafiqgoraya4363@gmail.com">EMAIL</a> ·
+    <a href="https://github.com/shahramshafiq" target="_blank" rel="noopener">GITHUB</a> ·
+    <a href="https://www.linkedin.com/in/shahramshafiq/" target="_blank" rel="noopener">LINKEDIN</a>
+  </span>
+</footer>
+</div>
+
+<!-- dossier -->
+<div id="dossier" role="dialog" aria-modal="true" aria-label="Case file">
+  <div class="folder">
+    <span class="ftab">CONFIDENTIAL</span>
+    <button class="close" id="dclose">CLOSE ✕</button>
+    <div id="dbody"></div>
+  </div>
+</div>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const board=document.getElementById('board');
+const svg=document.getElementById('strings');
+const GH="https://github.com/shahramshafiq/";
+
+/* ================= data ================= */
+const ZONES=[
+ {y:14.2,label:'SECTION A · <b>FIELD REPORTS</b> · THE EXPERIENCE'},
+ {y:41.5,label:'SECTION B · <b>EXHIBITS</b> · THE PROJECTS'},
+ {y:79.2,label:'SECTION C · <b>RECORDS &amp; INSTRUMENTS</b>'}
+];
+const items=[
+ /* ---- zone 0: subject ---- */
+ {id:'suspect',kind:'polaroid',x:41,y:.8,rot:-3,z:60,cap:'the subject.',
+  secret:{txt:'hire him.',top:'44%',left:'16%'},
+  dossier:{tab:'SUBJECT PROFILE',title:'Shahram Shafiq',sub:'"builds intelligent systems that solve real problems"',
+   meta:'LAST SEEN: ISLAMABAD, PK · STUDENT: FAST NUCES, BS COMPUTER SCIENCE (CGPA 3.66, 2024-2028)',
+   facts:['Summer 2026: completed two industry internships in the same summer','AI Automation Intern at Octathorn Pvt. Ltd., Rawalpindi','AI 3D Reconstruction Intern at PreserveMy.World × TechRealm, Lahore','STEM Trainer at JuniorCoderz since Mar 2026, teaching kids aged 6 to 16','Speaks English, Urdu, Punjabi, Hindi, and beginner German'],
+   links:[{href:'https://www.linkedin.com/in/shahramshafiq/',label:'LINKEDIN ↗'},{href:'https://github.com/shahramshafiq',label:'GITHUB ↗'}],
+   verdict:'HIGHLY MOTIVATED'}},
+ {id:'motive',kind:'note',x:23,y:4.5,rot:3,z:40,noteHtml:'motive?<br>"simple &gt; clever.<br>ship it, verify it."'},
+ {id:'uvnote',kind:'note',x:62,y:5,rot:-2,z:40,noteHtml:'some notes here are in invisible ink.<br><b>find the UV lamp.</b>'},
+
+ /* ---- zone 1: experience ---- */
+ {id:'octathorn',kind:'manila',x:13,y:17.5,rot:1.5,z:30,tag:'FIELD REPORT A',title:'Octathorn Internship',
+  body:'AI Automation Intern, Jun to Jul 2026. Browser automation, RPA, OCR pipelines, production code review.',
+  dossier:{tab:'FIELD REPORT A',title:'Octathorn Pvt. Ltd.',sub:'AI Automation Intern, Jun to Jul 2026 · NASTP Rawalpindi (hybrid)',
+   meta:'WITNESSES: TEAM LEAD · GITHUB PR TRAIL',
+   facts:['Built end-to-end browser automation and web scraping pipelines in Playwright with automated email reporting','Hands-on OCR work with EasyOCR and PaddleOCR for extracting text from images and scanned documents','Developed UiPath RPA workflows, including Computer Vision automation for interfaces with no accessible UI selectors','Shipped everything through GitHub pull requests under senior code review'],
+   verdict:'CASE CLOSED · SHIPPED'}},
+ {id:'pmw',kind:'manila',x:57,y:17.5,rot:-1.5,z:30,tag:'FIELD REPORT B',title:'PreserveMy.World × TechRealm',
+  body:'AI 3D Reconstruction Intern, Jun to Jul 2026. Heritage sites turned into explorable 3D worlds.',
+  dossier:{tab:'FIELD REPORT B',title:'PreserveMy.World × TechRealm',sub:'AI 3D Reconstruction Intern, Jun to Jul 2026 · Lahore (hybrid)',
+   meta:'TRACK: AI-BASED 3D SCENE RECONSTRUCTION · TEAM SPRINT LEAD',
+   facts:['Worked on the pipeline that converts phone footage of heritage sites into explorable 3D models','Researched and compared modern photogrammetry and neural reconstruction methods, then built working reconstruction prototypes with validated 3D output','Built a supporting web app: a Flask REST API with a React dashboard rendering an animated 3D point cloud','Led a team sprint and presented the final build at the Heritage Conservation Conference in Lahore'],
+   links:[{href:GH+'PMW-day1',label:'GITHUB ↗'}],
+   verdict:'CASE CLOSED · PRESENTED'}},
+ {id:'jcoderz',kind:'manila',x:13,y:28.5,rot:-1,z:30,tag:'FIELD REPORT C',title:'JuniorCoderz',
+  body:'STEM Trainer, Mar 2026 to present. Python, Scratch, Tinkercad, electronics, robotics. Ages 6 to 16.',
+  dossier:{tab:'FIELD REPORT C',title:'JuniorCoderz',sub:'STEM Trainer, Mar 2026 to present · Islamabad',
+   meta:'ONGOING ASSIGNMENT · STUDENTS AGED 6 TO 16, LOCAL AND ABROAD',
+   facts:['Teaches Python, Scratch, Tinkercad, electronics, and robotics through weekly sessions','Students include kids based abroad, taught through online one-on-one classes','Designs lesson plans and hands-on projects adapted to each student’s pace','Sends monthly progress feedback to parents covering strengths and next goals'],
+   verdict:'ACTIVE DUTY'}},
+ {id:'arrazzaq',kind:'file',x:57,y:28.5,rot:2,z:22,tag:'FIELD REPORT D',title:'Ar Razzaq Foundation',
+  body:'Director, Digital Volunteers Team. 2022 to 2024. Led ~50 volunteers.',
+  dossier:{tab:'FIELD REPORT D',title:'Ar Razzaq Foundation',sub:'Director, Digital Volunteers Team · 2022 to 2024',
+   meta:'EXECUTIVE BOARD MEMBER · COMMUNITY OPERATIONS',
+   facts:['Assembled and led a team of around 50 digital volunteers coordinating district-level community drives','Doubled the foundation’s social media reach through structured growth targets assigned across the team'],
+   verdict:'SERVICE RECORD CLEAN'}},
+
+ /* ---- zone 2: projects ---- */
+ {id:'devmind',kind:'file',x:6,y:45,rot:-2,z:26,tag:'EXHIBIT 01',title:'DevMind',
+  body:'6 autonomous agents. GitHub issue in, pull request out. No human in the loop.',
+  secret:{txt:"this one's my favourite.",top:'18%',left:'30%'},
+  dossier:{tab:'EXHIBIT 01',title:'DevMind, Autonomous Code Engineer',sub:'six agents, one clean pull request',
+   meta:'MO: PYTHON · FASTAPI · LANGGRAPH · REACT · CHROMADB · GROQ',
+   facts:['Agent chain: Issue Analyst, Architect, Developer, QA, Code Critic, PR Writer','RAG search over the full codebase with ChromaDB and sentence-transformers','Self-correcting critic loop that rejects weak code and retries, up to 5 iterations','QA agent writes and runs pytest tests in an isolated sandbox before anything ships'],
+   links:[{href:'https://devmind-theta.vercel.app',label:'LIVE DEMO ↗'},{href:GH+'devmind',label:'GITHUB ↗'}],
+   verdict:'DEPLOYED · LIVE'}},
+ {id:'chw',kind:'file',x:37,y:46.5,rot:1.5,z:24,tag:'EXHIBIT 02',title:'Community Health Worker Agent',
+  body:'LLM triage for Lady Health Workers’ field reports. 3 urgency tiers.',
+  dossier:{tab:'EXHIBIT 02',title:'Community Health Worker Field Report Agent',sub:'triage at the speed of inference',
+   meta:'MO: PYTHON · STREAMLIT · GROQ API',
+   facts:['Parses messy, free-text field reports into structured health data','Flags missing critical information and asks targeted follow-up questions','Classifies each case into urgent, follow-up, or routine tiers','Built for supervisors reading dozens of handwritten reports daily'],
+   links:[{href:'https://chw-report-agent.streamlit.app',label:'LIVE DEMO ↗'},{href:GH+'chw-report-agent',label:'GITHUB ↗'}],
+   verdict:'DEPLOYED · LIVE'}},
+ {id:'innsight',kind:'file',x:68,y:45,rot:-1,z:26,tag:'EXHIBIT 03',title:'INNsight',
+  body:'Hotel management desktop suite with a live AI concierge. Sub-2-second replies.',
+  dossier:{tab:'EXHIBIT 03',title:'INNsight, Hotel Management System',sub:'a desktop app that talks back',
+   meta:'MO: JAVAFX 21 · SQLITE · BOTPRESS · NGROK',
+   facts:['Full hotel management: bookings, rooms, guests, all in a JavaFX desktop app','Live AI chatbot wired through Botpress with end-to-end booking dialogue','Sub-2-second chatbot response time','Packaged for distribution with jpackage'],
+   links:[{href:GH+'INNsight-Hotel-Management-System-in-Java',label:'GITHUB ↗'}],
+   verdict:'FULLY OPERATIONAL'}},
+ {id:'citymind',kind:'file',x:6,y:56.5,rot:2,z:24,tag:'EXHIBIT 04',title:'CityMind',
+  body:'5 AI algorithms, zero libraries, one living city grid.',
+  dossier:{tab:'EXHIBIT 04',title:'CityMind, AI Urban Simulation',sub:'from-scratch or nothing',
+   meta:'MO: PYTHON · TKINTER · NO AI LIBRARIES',
+   facts:['CSP zoning with backtracking, AC-3, and MRV/LCV heuristics','Genetic algorithm with Edmonds-Karp max-flow','Simulated annealing and A* routing','K-Means plus decision-tree crime prediction, all on a threaded real-time grid'],
+   links:[{href:GH+'City-Mind-Urban-Intelligence-System-AI',label:'GITHUB ↗'}],
+   verdict:'ALL FROM SCRATCH'}},
+ {id:'mario',kind:'file',x:37,y:58,rot:-1.5,z:22,tag:'EXHIBIT 05',title:'Mario · x86 Assembly',
+  body:'7,700+ lines of pure assembly. Two playable levels. On purpose.',
+  dossier:{tab:'EXHIBIT 05',title:'Super Mario Bros, in x86 Assembly',sub:'done the hard way, on purpose',
+   meta:'MO: x86 ASSEMBLY · IRVINE32',
+   facts:['2 playable levels with enemy movement and hidden pathways','Bonus effects and file-based level persistence','7,700+ lines of hand-written assembly'],
+   links:[{href:GH+'Super-Mario-Game-Assembly-Language-',label:'GITHUB ↗'}],
+   verdict:'CERTIFIED INSANE'}},
+ {id:'pkrusd',kind:'file',x:68,y:56.5,rot:1,z:24,tag:'EXHIBIT 06',title:'PKR/USD Predictor',
+  body:'50 years of exchange-rate history. Random Forest R² 95.2% vs OLS 69.5%.',
+  dossier:{tab:'EXHIBIT 06',title:'PKR/USD Exchange-Rate Predictor',sub:'the ensemble beat the line by 25 points',
+   meta:'MO: PYTHON · RANDOM FOREST · OLS REGRESSION · REPORTLAB',
+   facts:['Modeled 50 years (1975 to 2024) of PKR/USD rates on 7 macroeconomic variables','Random Forest reached R² 95.2% against the OLS baseline of 69.5%','Generated a full automated analysis report via ReportLab'],
+   verdict:'EVIDENCE ON REQUEST'}},
+ {id:'ironnexus',kind:'file',x:21,y:68,rot:-1,z:22,tag:'EXHIBIT 07',title:'Iron Nexus',
+  body:'C++ railway system. 6 hand-built data structures. STL banned.',
+  dossier:{tab:'EXHIBIT 07',title:'Iron Nexus, Railway Management',sub:'the STL was never called to testify',
+   meta:'MO: C++ · CUSTOM DATA STRUCTURES ONLY',
+   facts:['AVL tree, doubly linked list, and weighted graph with Dijkstra routing','Hash table + BST hybrid index: prime-sized, multiplicative hashing','Dual-stack undo/redo engine'],
+   links:[{href:GH+'Railway-Management-System-using-Data-Structures',label:'GITHUB ↗'}],
+   verdict:'ZERO STL'}},
+ {id:'galaxy',kind:'index',x:53,y:68.5,rot:1.5,z:18,tag:'MINOR EXHIBIT',title:'Galaxy Wars',
+  body:'2D space shooter in C++ and SFML. OOP course project, UML and all.',
+  dossier:{tab:'MINOR EXHIBIT',title:'Galaxy Wars',sub:'object-oriented, literally',
+   meta:'MO: C++ · SFML · VISUAL STUDIO',
+   facts:['2D space shooter built for the OOP course at FAST (Fall 2025)','Full sprite, audio, and font asset pipeline loaded at runtime','Documented with UML diagrams and a formal project report'],
+   links:[{href:GH+'galaxy-wars-game',label:'GITHUB ↗'}],
+   verdict:'DIRECT HIT'}},
+
+ /* ---- zone 3: records ---- */
+ {id:'background',kind:'manila',x:16,y:82.5,rot:1,z:34,tag:'BACKGROUND CHECK',title:'Background Check',
+  body:'Education, honors, certifications, languages. All records pulled and verified.',
+  secret:{txt:'scholarship kid. earned it.',top:'24%',left:'6%'},
+  dossier:{tab:'BACKGROUND CHECK',title:'Records: Clean',sub:'education, honors, and papers, all verified',
+   meta:'SOURCES: FAST NUCES · ROOTS INTERNATIONAL · CADET COLLEGE HASAN ABDAL · LINKEDIN',
+   facts:['FAST NUCES Islamabad: BS Computer Science, CGPA 3.66 (2024 to 2028)','Roots International: A-Levels on a 90% merit scholarship; basketball team captain (2022 to 2024)','Cadet College Hasan Abdal: matriculation, 2022. Dorm Commander, MUN delegate with Best Position Papers award, article writer for the college magazine','Duke of Edinburgh Bronze Award · Round Square international event participant','Certifications: Google Generative AI · Google Data Analytics · Microsoft MS-900 · Data Science Foundations · Game Development with PyGame (GUVI, IIT Madras RP) · Google Fundamentals of Digital Marketing','Languages: English, Urdu, Punjabi, Hindi, German (beginner)'],
+   verdict:'RECORDS VERIFIED'}},
+ {id:'skills',kind:'manila',x:56,y:82.5,rot:-2,z:30,tag:'EVIDENCE BAG',title:'The Toolbox',
+  body:'Recovered instruments. Fingerprints everywhere.',
+  dossier:{tab:'EVIDENCE BAG',title:'Recovered Instruments',sub:'each one shows heavy use',
+   meta:'ANALYSIS COMPLETE · JUL 2026',
+   facts:['Agentic AI: LangGraph · LangChain · RAG · ChromaDB · Hugging Face · prompt engineering · Groq · Together AI','Automation: Playwright · UiPath RPA + Computer Vision · web scraping · Nodemailer','OCR: EasyOCR · PaddleOCR','Languages: Python · JavaScript · Java · C++ · SQL · x86 Assembly','Backend: FastAPI · Flask · SQLAlchemy · REST · WebSockets · auth, CORS, encryption','Web and data: React · Vite · Streamlit · scikit-learn · SQLite · MySQL · Git · Colab'],
+   verdict:'PRINTS MATCH'}},
+
+ /* ---- tip line ---- */
+ {id:'contact',kind:'tipline',x:38,y:93,rot:-1,z:36,
+  secret:{txt:'he replies fast. try it.',top:'6%',left:'4%'},
+  dossier:{tab:'TIP LINE',title:'Call It In',sub:'lines open. reward: one very good engineer.',
+   meta:'RESPONSE TIME: UNDER 1 DAY · ALL TIPS READ PERSONALLY',
+   form:true,
+   facts:['Email: <a href="mailto:shahramshafiqgoraya4363@gmail.com">shahramshafiqgoraya4363@gmail.com</a>','GitHub: <a href="https://github.com/shahramshafiq" target="_blank" rel="noopener">github.com/shahramshafiq</a>','LinkedIn: <a href="https://www.linkedin.com/in/shahramshafiq/" target="_blank" rel="noopener">linkedin.com/in/shahramshafiq</a>'],
+   verdict:'OPEN TO WORK'}}
+];
+const links=[
+ ['suspect','octathorn'],['suspect','pmw'],['suspect','jcoderz',true],['suspect','motive',true],
+ ['octathorn','devmind'],['octathorn','chw',true],['pmw','citymind',true],
+ ['devmind','chw'],['innsight','galaxy',true],['ironnexus','mario',true],
+ ['suspect','background',true],['background','skills',true],['skills','contact'],['pkrusd','contact',true]
+];
+
+/* ================= render ================= */
+const els={};
+items.forEach((it,idx)=>{
+  const d=document.createElement('div');
+  d.className='item prehide '+(it.kind==='manila'?'manila':it.kind==='polaroid'?'polaroid':it.kind==='note'?'note':it.kind==='index'?'index':it.kind==='tipline'?'tipline':'');
+  d.style.left=it.x+'%';d.style.top=it.y+'%';
+  d.style.setProperty('--rot',it.rot+'deg');
+  d.style.setProperty('--z',(it.z||22)+'px');
+  d.dataset.id=it.id;d.dataset.idx=idx;
+  if(it.dossier){d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label','Open case file: '+(it.title||it.dossier.title))}
+  if(it.kind==='polaroid'){
+    d.innerHTML=`<div class="photo"><div class="pwrap"><img src="img.png" alt="Polaroid photo of Shahram Shafiq" draggable="false"></div></div>
+      <div class="cap hand">${it.cap}</div><span class="stamp">SUBJECT</span>`;
+  }else if(it.kind==='note'){
+    d.innerHTML=it.noteHtml;
+    d.removeAttribute('role');d.removeAttribute('tabindex');
+  }else if(it.kind==='tipline'){
+    d.innerHTML=`<span class="tag">HOTLINE</span><h3>☎ TIP LINE</h3>
+      <p class="phone">KNOW SOMETHING? SAY SOMETHING.</p>
+      <p style="margin-top:6px">leave a message and it lands straight in his inbox.</p>
+      <div class="hint hand">call it in ↗</div>`;
+  }else{
+    d.innerHTML=`<span class="tag">${it.tag}</span>${it.kind==='manila'?`<span class="tab">${it.tag}</span>`:''}
+      <h3>${it.title}</h3><p>${it.body}</p><div class="hint hand">open file ↗</div>`;
+  }
+  if(it.secret){
+    const s=document.createElement('span');
+    s.className='secret';s.textContent=it.secret.txt;
+    s.style.top=it.secret.top;s.style.left=it.secret.left;
+    d.appendChild(s);
+  }
+  board.appendChild(d);
+  els[it.id]=d;
+});
+/* zone labels */
+ZONES.forEach(z=>{
+  const l=document.createElement('div');
+  l.className='zonelabel';l.style.top=z.y+'%';
+  l.innerHTML=z.label;
+  board.appendChild(l);
+});
+/* one evidence tape between zones */
+(function decor(){
+  const tape=document.createElement('span');
+  tape.className='tape';tape.textContent='EVIDENCE · EVIDENCE · EVIDENCE · EVIDENCE';
+  tape.style.left='36%';tape.style.top='40.2%';tape.style.width='28%';tape.style.textAlign='center';
+  board.appendChild(tape);
+  const hy=document.getElementById('hypno');hy.style.left='89%';hy.style.top='1.6%';
+  const ht=document.getElementById('hypnotag');ht.style.left='87.5%';ht.style.top='4.9%';
+})();
+
+/* pin-drop when board first enters view */
+const boardIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    boardIO.disconnect();
+    document.querySelectorAll('.item.prehide').forEach((el,i)=>{
+      if(reduce){el.classList.remove('prehide');return}
+      el.style.animationDelay=(i*0.055)+'s';
+      el.classList.add('dropin');el.classList.remove('prehide');
+    });
+  });
+},{threshold:.04});
+boardIO.observe(board);
+
+/* ================= sagging red strings ================= */
+function center(el){return [el.offsetLeft+el.offsetWidth/2, el.offsetTop+el.offsetHeight/2]}
+function drawStrings(){
+  if(innerWidth<=1080){svg.innerHTML='';return}
+  svg.setAttribute('viewBox',`0 0 ${board.offsetWidth} ${board.offsetHeight}`);
+  let html='';
+  links.forEach(([a,b,dash])=>{
+    const A=els[a],B=els[b];if(!A||!B)return;
+    const [x1,y1]=center(A),[x2,y2]=center(B);
+    const dist=Math.hypot(x2-x1,y2-y1);
+    const sag=Math.min(90,dist*0.10+16);
+    const mx=(x1+x2)/2, my=(y1+y2)/2+sag;
+    html+=`<path d="M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}" class="${dash?'dash':''}" data-a="${a}" data-b="${b}"/>`;
+    html+=`<circle class="knot" cx="${x1}" cy="${y1}" r="3.4"/><circle class="knot" cx="${x2}" cy="${y2}" r="3.4"/>`;
+  });
+  svg.innerHTML=html;
+}
+addEventListener('resize',drawStrings);
+addEventListener('load',()=>{drawStrings();setTimeout(drawStrings,400);setTimeout(drawStrings,1500)});
+if('ResizeObserver' in window)new ResizeObserver(()=>drawStrings()).observe(board);
+requestAnimationFrame(drawStrings);
+board.addEventListener('pointerover',e=>{
+  const it=e.target.closest('.item');if(!it)return;
+  svg.querySelectorAll('path').forEach(p=>{
+    if(p.dataset.a===it.dataset.id||p.dataset.b===it.dataset.id)p.classList.add('lit');
+  });
+});
+board.addEventListener('pointerout',e=>{
+  if(e.target.closest('.item'))svg.querySelectorAll('path.lit').forEach(p=>p.classList.remove('lit'));
+});
+
+/* ================= drag / open ================= */
+let drag=null;
+board.addEventListener('pointerdown',e=>{
+  if(innerWidth<=1080)return;
+  if(e.button!==undefined&&e.button!==0)return;
+  const it=e.target.closest('.item');
+  if(!it||e.target.closest('a'))return;
+  drag={el:it,sx:e.clientX,sy:e.clientY,ox:it.offsetLeft,oy:it.offsetTop,moved:false};
+  try{it.setPointerCapture(e.pointerId)}catch(_){/* synthetic events */}
+});
+board.addEventListener('pointermove',e=>{
+  if(!drag)return;
+  const dx=e.clientX-drag.sx,dy=e.clientY-drag.sy;
+  if(Math.abs(dx)+Math.abs(dy)>6)drag.moved=true;
+  drag.el.style.left=Math.max(0,Math.min(board.offsetWidth-drag.el.offsetWidth,drag.ox+dx))+'px';
+  drag.el.style.top=Math.max(0,Math.min(board.offsetHeight-drag.el.offsetHeight,drag.oy+dy))+'px';
+  drawStrings();
+});
+addEventListener('pointerup',()=>{
+  if(!drag)return;
+  if(!drag.moved)openDossier(drag.el.dataset.id);
+  drag=null;
+});
+addEventListener('pointercancel',()=>{drag=null});
+board.addEventListener('click',e=>{
+  if(innerWidth>1080)return;
+  const it=e.target.closest('.item');
+  if(it&&!e.target.closest('a'))openDossier(it.dataset.id);
+});
+board.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  const it=e.target.closest('.item');
+  if(!it)return;
+  e.preventDefault();
+  openDossier(it.dataset.id);
+});
+
+/* ================= flashlight + tilt + chroma ================= */
+const light=document.getElementById('light');
+const frame=document.getElementById('frame');
+addEventListener('pointermove',e=>{
+  const r=board.getBoundingClientRect();
+  light.style.setProperty('--lx',(e.clientX-r.left)+'px');
+  light.style.setProperty('--ly',(e.clientY-r.top)+'px');
+  if(innerWidth>1080&&!reduce&&!drag){
+    const nx=(e.clientX/innerWidth-.5), ny=(e.clientY/innerHeight-.5);
+    frame.style.setProperty('--tx',(nx*2.4).toFixed(2));
+    frame.style.setProperty('--ty',(-ny*1.8).toFixed(2));
+    document.documentElement.style.setProperty('--cx',nx.toFixed(2));
+    document.documentElement.style.setProperty('--cy',ny.toFixed(2));
+  }
+},{passive:true});
+
+/* ================= UV lamp ================= */
+const uvbtn=document.getElementById('uvbtn');
+function setUV(on){
+  document.body.classList.toggle('uv',on);
+  uvbtn.textContent='UV LAMP: '+(on?'ON':'OFF');
+  uvbtn.classList.toggle('on',on);
+  uvbtn.setAttribute('aria-pressed',String(on));
+  document.getElementById('headhint').textContent=on
+    ? 'there. the ink nobody else gets to read.'
+    : 'drag the evidence. open the folders. follow the red string.';
+}
+uvbtn.addEventListener('click',()=>setUV(!document.body.classList.contains('uv')));
+const hypno=document.getElementById('hypno');
+hypno.addEventListener('click',()=>setUV(!document.body.classList.contains('uv')));
+hypno.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setUV(!document.body.classList.contains('uv'))}});
+
+/* ================= dossier ================= */
+const dossier=document.getElementById('dossier');
+const dbody=document.getElementById('dbody');
+let lastOpener=null;
+function openDossier(id){
+  const it=items.find(x=>x.id===id);
+  if(!it||!it.dossier)return;
+  lastOpener=els[id];
+  const D=it.dossier;
+  let linksHtml=D.links?`<div class="links">${D.links.map(l=>`<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>`:'';
+  let formHtml='';
+  if(D.form){
+    formHtml=`
+    <form class="tipform" id="tipform" novalidate>
+      <input type="hidden" name="access_key" value="24b3e96a-a8ae-4340-8ef0-5e4af3cea2ab">
+      <input type="hidden" name="subject" value="The Shahram File - New Tip">
+      <input type="hidden" name="from_name" value="The Shahram File">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div><label for="tf-name">YOUR NAME</label><input id="tf-name" name="name" required placeholder="Det. Jane Doe"></div>
+      <div><label for="tf-email">RETURN ADDRESS (EMAIL)</label><input id="tf-email" name="email" type="email" required placeholder="you@agency.gov"></div>
+      <div><label for="tf-msg">THE TIP</label><textarea id="tf-msg" name="message" rows="4" required placeholder="I have a role he'd be perfect for…"></textarea></div>
+      <button type="submit" id="tipsubmit">FILE THE TIP</button>
+      <div class="form-result" id="tipresult" role="status" aria-live="polite"></div>
+    </form>`;
+  }
+  dbody.innerHTML=`<h2>${D.title}</h2><div class="sub hand">${D.sub}</div>
+    <div class="meta">${D.meta}</div>
+    <ul>${D.facts.map(f=>`<li>${f}</li>`).join('')}</ul>
+    ${linksHtml}${formHtml}
+    <div><span class="verdict">${D.verdict}</span></div>`;
+  dossier.querySelector('.ftab').textContent=D.tab;
+  dossier.setAttribute('aria-label','Case file: '+D.title);
+  dossier.classList.add('open');
+  document.getElementById('dclose').focus();
+  if(D.form)wireForm();
+}
+function closeDossier(){
+  dossier.classList.remove('open');
+  if(lastOpener&&lastOpener.focus)lastOpener.focus();
+}
+document.getElementById('dclose').addEventListener('click',closeDossier);
+dossier.addEventListener('click',e=>{if(e.target===dossier)closeDossier()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&dossier.classList.contains('open'))closeDossier()});
+
+/* ================= Web3Forms ================= */
+function wireForm(){
+  const form=document.getElementById('tipform');
+  const btn=document.getElementById('tipsubmit');
+  const result=document.getElementById('tipresult');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!form.reportValidity())return;
+    btn.disabled=true;btn.textContent='TRANSMITTING…';
+    result.className='form-result';
+    try{
+      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)});
+      const json=await res.json();
+      if(json.success){
+        form.querySelectorAll('input:not([type=hidden]),textarea').forEach(i=>i.value='');
+        result.className='form-result ok';
+        result.innerHTML='<span class="received">TIP RECEIVED</span><br><br>filed and forwarded. he’ll be in touch.';
+        btn.textContent='FILE ANOTHER';
+      }else{throw new Error(json.message||'submit failed')}
+    }catch(err){
+      result.className='form-result err';
+      result.innerHTML='line’s dead. email him directly: <a href="mailto:shahramshafiqgoraya4363@gmail.com">shahramshafiqgoraya4363@gmail.com</a>';
+      btn.textContent='FILE THE TIP';
+    }finally{btn.disabled=false}
+  });
+}
+
+/* ================================================================
+   SCROLL-SCRUBBED DOOR (the PMW-style entrance, crime edition)
+================================================================ */
+const intro=document.getElementById('intro');
+const doorway=document.getElementById('doorway');
+const doorL=document.getElementById('doorL');
+const doorR=document.getElementById('doorR');
+const tapeA=document.getElementById('tapeA');
+const tapeB=document.getElementById('tapeB');
+const introCopy=document.getElementById('introCopy');
+const scrollCue=document.getElementById('scrollCue');
+const glimpse=document.getElementById('glimpse');
+const clamp01=v=>Math.max(0,Math.min(1,v));
+const easeIn=t=>t*t;
+function scrubDoor(){
+  if(reduce)return;
+  const h=intro.offsetHeight-innerHeight;
+  const p=clamp01((scrollY-intro.offsetTop)/(h||1));
+  /* phase 1: tapes tear away (0 - .28) */
+  const t=clamp01(p/.28);
+  tapeA.style.transform=`rotate(-7deg) translateX(${-easeIn(t)*120}vw)`;
+  tapeB.style.transform=`rotate(6deg) translateX(${easeIn(t)*120}vw)`;
+  /* phase 2: doors swing (0.18 - 0.62) */
+  const d=clamp01((p-.18)/.44);
+  doorL.style.transform=`rotateY(${-d*104}deg)`;
+  doorR.style.transform=`rotateY(${d*104}deg)`;
+  /* phase 3: camera pushes through (0.42 - 1) */
+  const z=clamp01((p-.42)/.58);
+  doorway.style.transform=`scale(${1+easeIn(z)*7}) translateY(${easeIn(z)*4}%)`;
+  glimpse.style.opacity=(0.15+z*0.85).toFixed(2);
+  glimpse.style.filter=`blur(${(3-(z*3)).toFixed(1)}px)`;
+  /* copy + cue fade */
+  introCopy.style.opacity=String(clamp01(1-p*3.2));
+  scrollCue.style.opacity=String(clamp01(1-p*4));
+  /* crossfade into the case file, which is pulled up under the last viewport */
+  const stick=document.querySelector('.stick');
+  const fade=p<=.9?1:clamp01((1-p)/.1);
+  stick.style.opacity=String(fade);
+  stick.style.pointerEvents=fade<.15?'none':'auto';
+}
+addEventListener('scroll',scrubDoor,{passive:true});
+scrubDoor();
+document.getElementById('skipintro').addEventListener('click',()=>{
+  document.getElementById('casefile').scrollIntoView({behavior:reduce?'auto':'smooth'});
+});
+if(reduce){
+  /* no scrub: park the intro fully open, single screen */
+  tapeA.style.display='none';tapeB.style.display='none';
+  doorL.style.transform='rotateY(-104deg)';doorR.style.transform='rotateY(104deg)';
+  glimpse.style.opacity='1';glimpse.style.filter='none';
+}
+/* dust motes */
+if(!reduce){
+  const stick=document.querySelector('.stick');
+  for(let i=0;i<14;i++){
+    const m=document.createElement('span');
+    m.className='mote';
+    const s=1+Math.random()*2.6;
+    m.style.width=m.style.height=s+'px';
+    m.style.left=(30+Math.random()*40)+'%';
+    m.style.top=(20+Math.random()*60)+'%';
+    m.style.animationDuration=(7+Math.random()*9)+'s';
+    m.style.animationDelay=(-Math.random()*9)+'s';
+    m.style.opacity=(0.2+Math.random()*0.4).toFixed(2);
+    stick.appendChild(m);
+  }
+}
+</script>
+</body>
+</html>
