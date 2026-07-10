@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Shahram File</title>
 <meta name="description" content="Shahram Shafiq, AI automation and agentic systems. A portfolio filed as evidence: enter the evidence room, drag the cards, follow the red string, switch on the UV lamp.">
+<meta name="theme-color" content="#241a10">
 <meta property="og:title" content="The Shahram File">
 <meta property="og:description" content="Enter the evidence room. Follow the red string.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='38' r='26' fill='%23c0392b'/><rect x='47' y='58' width='6' height='30' fill='%23555'/></svg>">
@@ -31,11 +32,11 @@ button{font-family:inherit}
    INTRO · THE EVIDENCE ROOM DOOR  (scroll-scrubbed)
 ================================================================ */
 #intro{height:300vh;position:relative;background:#0a0806}
-.stick{position:sticky;top:0;height:100vh;overflow:hidden;background:
+.stick{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:
   radial-gradient(ellipse 60% 46% at 50% 30%, rgba(255,208,130,.10), transparent 70%),
   linear-gradient(180deg,#141110,#0a0806 70%)}
 .room3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;perspective:1100px}
-.doorway{position:relative;width:min(430px,72vw);aspect-ratio:10/16;transform-style:preserve-3d;will-change:transform}
+.doorway{position:relative;width:min(430px,72vw,46vh);aspect-ratio:10/16;transform-style:preserve-3d;will-change:transform}
 /* concrete frame */
 .doorway .frame{position:absolute;inset:-26px -30px;background:
   linear-gradient(135deg,#3a332c,#241f1a);
@@ -232,7 +233,7 @@ body.uv .secret{opacity:1}
 #dossier{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(12,8,4,.8);backdrop-filter:blur(3px);padding:18px}
 #dossier.open{display:flex}
 body.uv #dossier{background:rgba(3,2,16,.85)}
-.folder{position:relative;width:min(700px,94vw);max-height:88vh;overflow-y:auto;background:linear-gradient(160deg,var(--manila),var(--manila2));padding:46px 40px 34px;box-shadow:0 40px 100px rgba(0,0,0,.8);animation:folderIn .35s cubic-bezier(.2,1.2,.4,1)}
+.folder{position:relative;width:min(700px,94vw);max-height:88vh;max-height:88dvh;overflow-y:auto;background:linear-gradient(160deg,var(--manila),var(--manila2));padding:46px 40px 34px;box-shadow:0 40px 100px rgba(0,0,0,.8);animation:folderIn .35s cubic-bezier(.2,1.2,.4,1)}
 @keyframes folderIn{from{transform:translateY(40px) rotate(-1.5deg);opacity:0}to{transform:none;opacity:1}}
 .folder .ftab{position:absolute;top:0;left:36px;transform:translateY(-100%);background:var(--manila);padding:6px 26px;font-size:11px;letter-spacing:3px;border-radius:6px 6px 0 0}
 .folder h2{font-size:24px;letter-spacing:2px;text-transform:uppercase;border-bottom:3px double var(--ink);padding-bottom:10px;margin-bottom:6px}
@@ -270,25 +271,55 @@ body.uv #dossier{background:rgba(3,2,16,.85)}
 .received{border:3px solid #1e6b34;color:#1e6b34;display:inline-block;padding:6px 16px;font-size:14px;letter-spacing:3px;transform:rotate(-5deg)}
 
 /* ================================================================
-   OUTRO · CASE CLOSED  (scroll-scrubbed)
+   OUTRO · CASE CLOSED  (scroll-scrubbed, cinematic)
 ================================================================ */
-#outro{height:260vh;position:relative;background:#080604}
-.ostick{position:sticky;top:0;height:100vh;overflow:hidden;
-  background:
-    radial-gradient(ellipse 55% 40% at 50% 38%, rgba(255,208,130,.08), transparent 70%),
-    linear-gradient(180deg,#0e0b08,#080604 75%)}
+#outro{height:300vh;position:relative;background:#080604}
+.ostick{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;
+  background:linear-gradient(180deg,#0d0a07,#080604 75%)}
+.ostick::after{ /* film grain */
+  content:'';position:absolute;inset:0;z-index:9;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.ostick.shake{animation:oshake .38s cubic-bezier(.36,.07,.19,.97)}
+@keyframes oshake{
+  10%{transform:translate(-7px,4px)}20%{transform:translate(6px,-3px)}
+  35%{transform:translate(-4px,2px)}50%{transform:translate(3px,-2px)}
+  65%{transform:translate(-2px,1px)}80%{transform:translate(1px,0)}100%{transform:none}}
+/* swinging interrogation lamp */
+.olamp{position:absolute;top:0;left:50%;z-index:2;transform-origin:top center;
+  animation:sway 5.6s ease-in-out infinite alternate;will-change:transform}
+.olamp .cord{width:3px;height:15vh;background:#191410;margin:0 auto}
+.olamp .shade{width:118px;height:52px;margin:0 auto;position:relative;
+  background:linear-gradient(#332a23,#14100d);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.olamp .bulb{position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle,#ffe9bd,#e8b46a 70%);box-shadow:0 0 26px 10px rgba(255,214,150,.5)}
+.olamp .beam{width:74vmin;height:74vmin;margin:-6px auto 0;
+  background:radial-gradient(ellipse at top,rgba(255,214,150,.17),transparent 62%);
+  clip-path:polygon(50% 0,100% 100%,0 100%)}
+@keyframes sway{from{transform:translateX(-50%) rotate(-3.2deg)}to{transform:translateX(-50%) rotate(3.2deg)}}
 .bars{position:absolute;inset:-2% 0;transform:translateY(-103%);will-change:transform;z-index:3;
   background:
     linear-gradient(180deg, transparent 0 12vh, rgba(58,62,66,.9) 12vh calc(12vh + 12px), transparent calc(12vh + 12px) 78vh, rgba(58,62,66,.9) 78vh calc(78vh + 12px), transparent calc(78vh + 12px)),
     repeating-linear-gradient(90deg, transparent 0 60px, #3c4147 60px 68px, #23272b 68px 74px, #14171a 74px 78px, transparent 78px 138px);
   filter:drop-shadow(6px 0 10px rgba(0,0,0,.6))}
-.stamp2{position:absolute;top:36%;left:50%;z-index:4;opacity:0;
+/* dust puff when the bars land */
+.dust{position:absolute;left:0;right:0;bottom:0;height:22vh;z-index:3;opacity:0;pointer-events:none}
+.dust i{position:absolute;bottom:0;border-radius:50%;background:rgba(190,170,140,.5);filter:blur(4px)}
+/* stamp + shockwave + ink splatter */
+.shock{position:absolute;top:36%;left:50%;z-index:4;width:min(560px,80vw);aspect-ratio:1.6;
+  transform:translate(-50%,-50%) scale(.4);opacity:0;border:3px solid rgba(214,69,51,.8);border-radius:50%;pointer-events:none}
+.splat{position:absolute;top:36%;left:50%;z-index:4;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+.splat i{position:absolute;border-radius:50%;background:#d64533}
+.stamp2{position:absolute;top:36%;left:50%;z-index:5;opacity:0;
   transform:translate(-50%,-50%) rotate(0deg) scale(6);
-  font-size:clamp(38px,8.4vw,92px);letter-spacing:10px;color:#d64533;text-align:center;line-height:1.02;
-  border:6px solid #d64533;padding:14px 44px;white-space:nowrap;
+  font-size:clamp(34px,8.4vw,92px);letter-spacing:10px;color:#d64533;text-align:center;line-height:1.02;
+  border:6px solid #d64533;padding:14px clamp(18px,4vw,44px);white-space:nowrap;
   text-shadow:0 0 34px rgba(214,69,51,.35);box-shadow:inset 0 0 34px rgba(214,69,51,.14), 0 0 60px rgba(0,0,0,.5);
   will-change:transform,opacity}
-.osign{position:absolute;left:0;right:0;top:62%;z-index:4;text-align:center;color:#cfc4b2;opacity:0;transform:translateY(30px);padding:0 20px}
+.vline{position:absolute;left:0;right:0;top:55.5%;z-index:5;text-align:center;
+  font-size:clamp(15px,2.4vw,22px);letter-spacing:5px;color:#e8d5a3;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.vline .vcursor{display:inline-block;width:10px;height:1em;background:#e8d5a3;vertical-align:-2px;margin-left:3px;animation:blinkv .9s steps(1) infinite}
+@keyframes blinkv{50%{opacity:0}}
+.osign{position:absolute;left:0;right:0;top:63%;z-index:5;text-align:center;color:#cfc4b2;opacity:0;transform:translateY(30px);padding:0 20px}
 .osign .big{font-family:'Caveat',cursive;font-size:clamp(24px,3.6vw,36px);color:#e8b46a}
 .osign .small{font-size:11.5px;letter-spacing:3px;color:#8d7c60;margin-top:10px;text-transform:uppercase}
 .obtns{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
@@ -320,13 +351,18 @@ body.uv footer{color:#4d54a8}body.uv footer a{color:var(--uvink)}
   .controls{margin-left:0}
   .case-head .hint2{text-align:left;margin-left:0;max-width:none}
   #intro{height:220vh}
-  #outro{height:200vh}
+  #outro{height:240vh}
+  .tipform input,.tipform textarea{font-size:16px}
+  .olamp .beam{width:100vmin;height:100vmin}
 }
 @media (prefers-reduced-motion:reduce){
   #outro{height:100vh}
   .bars{transform:translateY(0) !important}
   .stamp2{opacity:1 !important;transform:translate(-50%,-50%) rotate(-12deg) scale(1) !important}
   .osign{opacity:1 !important;transform:none !important}
+  .olamp{animation:none}
+  .vline .vcursor{animation:none}
+  .ostick.shake{animation:none}
   .folder,.dropin{animation:none !important}
   .prehide{opacity:1}
   .item.polaroid .photo img{animation:none}
@@ -419,9 +455,14 @@ body.uv footer{color:#4d54a8}body.uv footer a{color:var(--uvink)}
 
 <!-- ============ OUTRO: CASE CLOSED ============ -->
 <section id="outro" aria-label="Outro: case closed">
-  <div class="ostick">
+  <div class="ostick" id="ostick">
+    <div class="olamp" aria-hidden="true"><div class="cord"></div><div class="shade"><div class="bulb"></div></div><div class="beam"></div></div>
     <div class="bars" id="bars" aria-hidden="true"></div>
+    <div class="dust" id="dust" aria-hidden="true"></div>
+    <div class="shock" id="shock" aria-hidden="true"></div>
+    <div class="splat" id="splat" aria-hidden="true"></div>
     <div class="stamp2" id="stamp2">CASE<br>CLOSED</div>
+    <p class="vline" id="vline" aria-label="Verdict: hire him"><span id="vtext"></span><span class="vcursor" aria-hidden="true"></span></p>
     <div class="osign" id="osign">
       <p class="big">you read the whole file, detective. the department notices things like that.</p>
       <p class="small">the evidence stays pinned &middot; the tip line stays open &middot; the subject remains at large (and hireable)</p>
@@ -866,31 +907,86 @@ function scrubDoor(){
   stick.style.opacity=String(fade);
   stick.style.pointerEvents=fade<.15?'none':'auto';
 }
-/* ---------- outro: bars drop, stamp slams, sign-off ---------- */
+/* ---------- outro: lamp, bars, dust, stamp, shockwave, verdict, sign-off ---------- */
 const outro=document.getElementById('outro');
+const ostick=document.getElementById('ostick');
 const bars=document.getElementById('bars');
+const dust=document.getElementById('dust');
+const shock=document.getElementById('shock');
+const splat=document.getElementById('splat');
 const stamp2=document.getElementById('stamp2');
+const vtext=document.getElementById('vtext');
+const vline=document.getElementById('vline');
 const osign=document.getElementById('osign');
 const easeOutC=t=>1-Math.pow(1-t,3);
+const easeOutBack=t=>{const c=1.70158;return 1+ (c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2)};
+const VERDICT="VERDICT: HIRE HIM.";
+/* one-time scatter geometry for dust + splatter */
+(function(){
+  for(let i=0;i<12;i++){
+    const d=document.createElement('i');
+    const s=20+Math.random()*54;
+    d.style.width=d.style.height=s+'px';
+    d.style.left=(4+Math.random()*92)+'%';
+    d.style.bottom=(-s/2)+'px';
+    dust.appendChild(d);
+  }
+  for(let i=0;i<14;i++){
+    const sp=document.createElement('i');
+    const s=3+Math.random()*9;
+    const ang=Math.random()*Math.PI*2, r=90+Math.random()*150;
+    sp.style.width=sp.style.height=s+'px';
+    sp.style.left=(Math.cos(ang)*r)+'px';
+    sp.style.top=(Math.sin(ang)*r*0.55)+'px';
+    splat.appendChild(sp);
+  }
+})();
+let barsLanded=false, stampLanded=false;
+function shakeNow(){
+  ostick.classList.remove('shake');
+  void ostick.offsetWidth; /* restart the keyframe */
+  ostick.classList.add('shake');
+}
 function scrubOutro(){
   if(reduce)return;
   const h=outro.offsetHeight-innerHeight;
   const p=clamp01((scrollY-outro.offsetTop)/(h||1));
-  const b=clamp01(p/.36);                       /* bars descend */
-  bars.style.transform=`translateY(${(-103+easeOutC(b)*103).toFixed(2)}%)`;
-  const s=clamp01((p-.4)/.28);                  /* stamp slams */
-  stamp2.style.opacity=String(s);
+  /* phase 1: bars slam with overshoot (0 - .3) */
+  const b=clamp01(p/.3);
+  bars.style.transform=`translateY(${(-103+easeOutBack(b)*103).toFixed(2)}%)`;
+  if(b>=1&&!barsLanded){barsLanded=true;shakeNow()}
+  if(b<0.9)barsLanded=false;
+  /* dust puff around the landing moment (bell curve at p=.32) */
+  const du=clamp01(1-Math.abs((p-.33)/.09));
+  dust.style.opacity=(du*.85).toFixed(2);
+  dust.style.transform=`translateY(${(-du*46).toFixed(1)}px)`;
+  /* phase 2: stamp slams (.4 - .58) */
+  const s=clamp01((p-.4)/.18);
+  stamp2.style.opacity=String(Math.min(1,s*1.4));
   stamp2.style.transform=`translate(-50%,-50%) rotate(${(-12*easeOutC(s)).toFixed(1)}deg) scale(${(6-5*easeOutC(s)).toFixed(2)})`;
-  const t2=clamp01((p-.62)/.3);                 /* sign-off rises */
+  if(s>=1&&!stampLanded){stampLanded=true;shakeNow()}
+  if(s<0.9)stampLanded=false;
+  /* shockwave + ink splatter right after impact (.56 - .72) */
+  const w=clamp01((p-.56)/.16);
+  shock.style.opacity=((1-w)*.7*(w>0?1:0)).toFixed(2);
+  shock.style.transform=`translate(-50%,-50%) scale(${(0.4+w*1.3).toFixed(2)})`;
+  splat.style.opacity=String(clamp01((p-.55)/.06));
+  /* phase 3: the verdict types itself (.62 - .8) */
+  const tv=clamp01((p-.62)/.18);
+  vtext.textContent=VERDICT.slice(0,Math.round(tv*VERDICT.length));
+  vline.style.opacity=tv>0?'1':'0';
+  /* phase 4: sign-off rises (.8 - 1) */
+  const t2=clamp01((p-.8)/.2);
   osign.style.opacity=String(t2);
   osign.style.transform=`translateY(${(30-30*t2).toFixed(1)}px)`;
 }
+if(reduce){vtext.textContent=VERDICT;splat.style.opacity='1'}
 document.getElementById('reopen').addEventListener('click',()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'}));
 document.getElementById('lasttip').addEventListener('click',()=>openDossier('contact'));
 
 /* tab-blur easter egg */
 document.addEventListener('visibilitychange',()=>{
-  document.title=document.hidden?'COLD CASE — the board misses you':'The Shahram File';
+  document.title=document.hidden?'COLD CASE: the board misses you':'The Shahram File';
 });
 
 function onScroll(){scrubDoor();scrubOutro()}
