@@ -148,7 +148,7 @@ body.uv .board-frame{
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.22 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
     linear-gradient(135deg,#1a1745,#0e0b2e);
 }
-#board{position:relative;width:100%;height:3013px;overflow:hidden;transform-style:preserve-3d}
+#board{position:relative;width:100%;height:3653px;overflow:hidden;transform-style:preserve-3d}
 #light{position:absolute;inset:0;pointer-events:none;z-index:30;
   background:radial-gradient(460px circle at var(--lx,50%) var(--ly,20%),rgba(255,214,150,.15),rgba(0,0,0,.4) 78%)}
 body.uv #light{background:radial-gradient(430px circle at var(--lx,50%) var(--ly,20%),rgba(125,249,255,.12),rgba(2,2,14,.6) 78%)}
@@ -521,53 +521,53 @@ const GH="https://github.com/shahramshafiq/";
 
 /* ================= data ================= */
 const ZONES=[
- {y:19.17,after:'uvnote',label:'SECTION A · <b>FIELD REPORTS</b> · THE EXPERIENCE'},
- {y:53.67,after:'arrazzaq',label:'SECTION B · <b>EXHIBITS</b> · THE PROJECTS'},
- {y:77.99,after:'pkrusd',label:'SECTION C · <b>RECORDS &amp; INSTRUMENTS</b>'}
+ {y:15.81,after:'uvnote',label:'SECTION A · <b>FIELD REPORTS</b> · THE EXPERIENCE'},
+ {y:44.27,after:'arrazzaq',label:'SECTION B · <b>EXHIBITS</b> · THE PROJECTS'},
+ {y:81.85,after:'pkrusd',label:'SECTION C · <b>RECORDS &amp; INSTRUMENTS</b>'}
 ];
 const items=[
  /* ---- zone 0: subject ---- */
- {id:'suspect',kind:'polaroid',x:41,y:0.88,rot:-3,z:60,cap:'the subject.',
+ {id:'suspect',kind:'polaroid',x:41,y:0.73,rot:-3,z:60,cap:'the subject.',
   secret:{txt:'hire him.',top:'44%',left:'16%'},
   dossier:{tab:'SUBJECT PROFILE',title:'Shahram Shafiq',sub:'"builds intelligent systems that solve real problems"',
    meta:'LAST SEEN: ISLAMABAD, PK · STUDENT: FAST NUCES, BS COMPUTER SCIENCE (CGPA 3.66, 2024-2028)',
    facts:['Summer 2026: completed two industry internships in the same summer','AI Automation Intern at Octathorn Pvt. Ltd., Rawalpindi','AI 3D Reconstruction Intern at PreserveMy.World × TechRealm, Remote','Junior AI Engineer since Aug 2026: real-time voice agents, LLM apps, RAG, AI agents, MCP servers and system design','STEM Trainer at Junior Coderz since Mar 2026, teaching kids aged 6 to 16','Speaks English, Urdu, Punjabi, Hindi, and beginner German'],
    links:[{href:'https://www.linkedin.com/in/shahramshafiq/',label:'LINKEDIN ↗'},{href:'https://github.com/shahramshafiq',label:'GITHUB ↗'}],
    verdict:'HIGHLY MOTIVATED'}},
- {id:'motive',kind:'note',x:23,y:4.93,rot:3,z:40,noteHtml:'motive?<br>"simple &gt; clever.<br>ship it, verify it."'},
- {id:'uvnote',kind:'note',x:62,y:5.48,rot:-2,z:40,noteHtml:'some notes here are in invisible ink.<br><b>find the UV lamp.</b>'},
- {id:'resume',kind:'manila',x:38,y:11.5,rot:2,z:38,tag:'OFFICIAL RECORD',title:'My Resume',
+ {id:'motive',kind:'note',x:23,y:4.07,rot:3,z:40,noteHtml:'motive?<br>"simple &gt; clever.<br>ship it, verify it."'},
+ {id:'uvnote',kind:'note',x:62,y:4.52,rot:-2,z:40,noteHtml:'some notes here are in invisible ink.<br><b>find the UV lamp.</b>'},
+ {id:'resume',kind:'manila',x:38,y:9.49,rot:2,z:38,tag:'OFFICIAL RECORD',title:'My Resume',
   body:'One page, no fluff. Click to pull the full case file.',
   directPdf:'resume.pdf'},
 
  /* ---- zone 1: experience ---- */
- {id:'devdens',kind:'manila',x:40,y:22.23,rot:-1,z:32,tag:'FIELD REPORT A',title:'Developers Den LLC',
+ {id:'devdens',kind:'manila',x:40,y:18.34,rot:-1,z:32,tag:'FIELD REPORT A',title:'Developers Den LLC',
   body:'Junior AI Engineer, Aug 2026 to present. Voice agents, LLM apps, RAG, AI agents, MCP servers and system design.',
   dossier:{tab:'FIELD REPORT A',title:'Developers Den LLC',sub:'Junior AI Engineer, Aug 2026 to present · Islamabad (onsite)',
    meta:'CURRENT ASSIGNMENT · VOICE AGENTS · LLM APPS · RAG · AGENTS · MCP · SYSTEM DESIGN',
    facts:['Builds real-time voice agents: custom streaming STT (Deepgram), LLM (OpenAI) and TTS (ElevenLabs) pipelines and Vapi, tuned for low latency','Builds backend services in FastAPI with async I/O, Valkey caching, SSE streaming, background jobs and Docker','Builds LLM applications with the OpenAI API, LangChain and LangGraph: prompt engineering, tool calling, and short-term and long-term memory','Built a measurement-first corrective RAG pipeline over SEC 10-K filings (pgvector, LangGraph), lifting accuracy from 11/25 to 25/25 on a hand-built evaluation set, with citations and abstention when evidence is weak','Builds AI agents and multi-agent systems in LangGraph (ReAct, tool-calling and multi-agent patterns)','Built MCP servers (a calendar and task assistant, and a 6-tool inventory and order system) protected by NeMo Guardrails on input and output, tested against jailbreaks and prompt injection','Does system design for agentic AI: bounded agents, multi-agent patterns, MCP and A2A, with the guardrail, evaluation and cost trade-offs','Responsibilities are expanding as the role ramps up'],
    verdict:'CASE OPEN · ACTIVE'}},
- {id:'jcoderz',kind:'manila',x:13,y:32.09,rot:-1,z:30,tag:'FIELD REPORT B',title:'Junior Coderz',
+ {id:'jcoderz',kind:'manila',x:13,y:26.47,rot:-1,z:30,tag:'FIELD REPORT B',title:'Junior Coderz',
   body:'STEM Trainer, Mar 2026 to present. Python, Scratch, Tinkercad, electronics, robotics. Ages 6 to 16.',
   dossier:{tab:'FIELD REPORT B',title:'Junior Coderz',sub:'STEM Trainer, Mar 2026 to present',
    meta:'ONGOING ASSIGNMENT · INTERNATIONAL STUDENTS AGED 6 TO 16',
    facts:['Teaches Python, Scratch, Tinkercad, electronics, and robotics through weekly sessions','Teaches international students, mainly in the US, Canada, and the Middle East, through online one-on-one classes','Designs lesson plans and hands-on projects adapted to each student’s pace','Sends monthly progress feedback to parents covering strengths and next goals'],
    verdict:'ACTIVE DUTY'}},
- {id:'octathorn',kind:'manila',x:57,y:32.09,rot:1.5,z:30,tag:'FIELD REPORT C',title:'Octathorn Internship',
+ {id:'octathorn',kind:'manila',x:57,y:26.47,rot:1.5,z:30,tag:'FIELD REPORT C',title:'Octathorn Internship',
   body:'AI Automation Intern, Jun to Jul 2026. Browser automation, RPA, OCR pipelines, production code review.',
   dossier:{tab:'FIELD REPORT C',title:'Octathorn Pvt. Ltd.',sub:'AI Automation Intern, Jun to Jul 2026 · NASTP Rawalpindi (hybrid)',
    meta:'WITNESSES: TEAM LEAD · GITHUB PR TRAIL',
    facts:['Built end-to-end browser automation and web scraping pipelines in Playwright with automated email reporting','Built a computer vision change-detection pipeline: MOG2 background subtraction (OpenCV) for static cameras, and a fine-tuned SNUNet-CD with Triplet Attention model on the CDD dataset (PyTorch, GPU training on Google Colab) for moving cameras','Hands-on OCR work with EasyOCR and PaddleOCR for extracting text from images and scanned documents','Developed UiPath RPA workflows, including Computer Vision automation for interfaces with no accessible UI selectors, published to Orchestrator','Shipped everything through GitHub pull requests under senior code review'],
    links:[{href:'octathorn-completion-letter.pdf',label:'EVIDENCE: COMPLETION LETTER',pdf:true}],
    verdict:'CASE CLOSED · SHIPPED'}},
- {id:'pmw',kind:'manila',x:13,y:41.95,rot:-1.5,z:30,tag:'FIELD REPORT D',title:'PreserveMy.World × TechRealm',
+ {id:'pmw',kind:'manila',x:13,y:34.6,rot:-1.5,z:30,tag:'FIELD REPORT D',title:'PreserveMy.World × TechRealm',
   body:'AI 3D Reconstruction Intern, Jun to Aug 2026. Heritage sites turned into explorable 3D worlds.',
   dossier:{tab:'FIELD REPORT D',title:'PreserveMy.World × TechRealm',sub:'AI 3D Reconstruction Intern, Jun to Aug 2026 · Remote',
    meta:'TRACK: AI-BASED 3D SCENE RECONSTRUCTION · TEAM SPRINT LEAD',
    facts:['Worked on the pipeline that converts phone footage of heritage sites into explorable 3D models','Researched and compared modern photogrammetry and neural reconstruction methods, then built working reconstruction prototypes with validated 3D output','Built a supporting web app: a Flask REST API with a React dashboard rendering an animated 3D point cloud','Led a team sprint, then ran extension sprints to further refine and enhance the reconstruction quality'],
    links:[{href:'pmw-certificate.pdf',label:'EVIDENCE: CERTIFICATE',pdf:true},{href:GH+'preservemy.world-internship',label:'GITHUB ↗'}],
    verdict:'CASE CLOSED · EXTENDED'}},
- {id:'arrazzaq',kind:'file',x:57,y:41.95,rot:2,z:22,tag:'FIELD REPORT E',title:'Ar Razzaq Foundation',
+ {id:'arrazzaq',kind:'file',x:57,y:34.6,rot:2,z:22,tag:'FIELD REPORT E',title:'Ar Razzaq Foundation',
   body:'Director, Digital Volunteers Team (Volunteer). 2022 to 2024. Led ~50 volunteers.',
   dossier:{tab:'FIELD REPORT E',title:'Ar Razzaq Foundation',sub:'Director, Digital Volunteers Team (Volunteer) · 2022 to 2024',
    meta:'EXECUTIVE BOARD MEMBER · COMMUNITY OPERATIONS',
@@ -575,64 +575,92 @@ const items=[
    verdict:'SERVICE RECORD CLEAN'}},
 
  /* ---- zone 2: projects ---- */
- {id:'devmind',kind:'file',x:6,y:56.73,rot:-2,z:26,tag:'EXHIBIT 01',title:'DevMind',
+ {id:'voice',kind:'manila',x:6,y:46.78,rot:-2,z:34,tag:'EXHIBIT 01',title:'Voice Booking Assistant',
+  body:'A receptionist you can phone or talk to. It books Google Calendar slots. Two builds: a custom pipeline and Gemini Live.',
+  dossier:{tab:'EXHIBIT 01',title:'Voice Booking Assistant',sub:'two ways to build a receptionist that listens',
+   meta:'MO: PYTHON · FASTAPI · TWILIO · DEEPGRAM · OPENAI · ELEVENLABS · GEMINI LIVE',
+   facts:['Custom pipeline: Deepgram Flux for speech-to-text, an OpenAI model with tool calling and ElevenLabs for speech, streamed and overlapped so the first sound starts early','Twilio phone layer: incoming calls reach the same conversation code through a signed webhook and a bidirectional Media Stream, next to a browser version','Gemini Live build: one Gemini Live connection hears the caller, decides, calls the tools and speaks, with no hand-offs between services','Eight booking tools over Google Calendar (availability, booking, lookup, reschedule, cancel), with every rule kept in backend code instead of the model','Nothing changes until the code reads the exact details back and the caller says yes; input and output guardrails screen every turn','Barge-in, short filler phrases while a tool runs, and a latency stopwatch per reply; 152 and 147 automated tests in the two repos'],
+   links:[{href:GH+'twilio-voice-booking-assistant',label:'GITHUB: CUSTOM PIPELINE ↗'},{href:GH+'gemini-live-booking-assistant',label:'GITHUB: GEMINI LIVE ↗'}],
+   verdict:'BOTH BUILDS PASSING'}},
+ {id:'sec',kind:'manila',x:37,y:47.88,rot:1.5,z:33,tag:'EXHIBIT 02',title:'SEC Filings RAG QA',
+  body:'Ask about 10-K filings, get cited answers or an honest "not enough evidence". 11/25 to 25/25 on the eval.',
+  dossier:{tab:'EXHIBIT 02',title:'SEC Filings RAG QA',sub:'measure first, then fix',
+   meta:'MO: PYTHON · FASTAPI · LANGGRAPH · PGVECTOR · OPENAI',
+   facts:['Answers questions over the 10-K filings of Apple, Microsoft, Walmart and JPMorgan Chase (fiscal 2022 and 2023), with a citation on every claim','Corrective RAG as a LangGraph state machine: filter by company and year, retrieve, grade the evidence, rewrite the query if it is weak, and abstain if it still falls short','Each design choice was kept or dropped by a run against a 25-question golden set: baseline 11/25 correct, final pipeline 25/25 correct and 25/25 faithful','Tested against prompt injection planted in body text and in a table cell, and checks that every cited chunk was really retrieved','Honest limits: the golden set is small and graded by an LLM judge, so 25/25 is a result on this corpus, not a general accuracy figure'],
+   links:[{href:GH+'sec-filings-rag-qa',label:'GITHUB ↗'}],
+   verdict:'MEASURED, NOT GUESSED'}},
+ {id:'devmate',kind:'manila',x:68,y:46.78,rot:-1,z:32,tag:'EXHIBIT 03',title:'DevMate LLM API',
+  body:'FastAPI backend for a tool-calling assistant: streaming replies, layered memory, guardrails. Plus an event-processing API.',
+  dossier:{tab:'EXHIBIT 03',title:'DevMate + Event Processing API',sub:'two FastAPI backends, built properly',
+   meta:'MO: PYTHON · FASTAPI · OPENAI · VALKEY · NEMO GUARDRAILS · SSE',
+   facts:['DevMate: an assistant API with six tools (date and time, web search, to-do list), streaming replies over Server-Sent Events and per-session token and cost tracking','Layered memory: the last 10 turns kept in Valkey, plus durable facts about each user extracted in the background','NeMo Guardrails screen every input and output, and user text is wrapped so override attempts are ignored','Event Processing API: extracts text from uploaded PDFs in background jobs, with live SSE progress, retries and a webhook','Valkey-backed caching, rate limiting, idempotency keys and locks, with restart recovery for jobs left half-done'],
+   links:[{href:GH+'devmate-llm-api',label:'GITHUB: DEVMATE ↗'},{href:GH+'event-processing-fastapi',label:'GITHUB: EVENT API ↗'}],
+   verdict:'BACKENDS BUILT'}},
+ {id:'mcp',kind:'file',x:6,y:55.27,rot:1.5,z:28,tag:'EXHIBIT 04',title:'MCP Tool Servers',
+  body:'Two MCP servers that give an LLM safe access to real tools: an inventory and order system, and a Google Calendar assistant.',
+  dossier:{tab:'EXHIBIT 04',title:'MCP Tool Servers',sub:'tools an LLM can use without breaking things',
+   meta:'MO: PYTHON · MCP · FASTAPI · OPENAI · NEMO GUARDRAILS · GOOGLE CALENDAR',
+   facts:['Order Management MCP: six tools to add products, search the catalog, create orders, move them through statuses, restock and report','That server is wrapped in NeMo Guardrails on input and output, and the assistant loop is capped at 4 tool rounds per message','Task Assistant MCP: four tools (tasks and Google Calendar) run in a separate MCP server process over stdio, and the model reads its tool list from the server at request time','Conflict-safe booking: it checks the requested slot first and reports the clash instead of double-booking','A failed tool call goes back to the model as an observation instead of crashing the request'],
+   links:[{href:GH+'order-management-mcp-server',label:'GITHUB: ORDER SYSTEM ↗'},{href:GH+'google-calendar-mcp-assistant',label:'GITHUB: CALENDAR ASSISTANT ↗'}],
+   verdict:'SAFE TOOL ACCESS'}},
+ {id:'devmind',kind:'file',x:37,y:56.36,rot:-2,z:26,tag:'EXHIBIT 05',title:'DevMind',
   body:'6 autonomous agents. GitHub issue in, pull request out. No human in the loop.',
   secret:{txt:"this one's my favourite.",top:'18%',left:'30%'},
-  dossier:{tab:'EXHIBIT 01',title:'DevMind, Autonomous Code Engineer',sub:'six agents, one clean pull request',
+  dossier:{tab:'EXHIBIT 05',title:'DevMind, Autonomous Code Engineer',sub:'six agents, one clean pull request',
    meta:'MO: PYTHON · FASTAPI · LANGGRAPH · REACT · CHROMADB · GROQ',
    facts:['Agent chain: Issue Analyst, Architect, Developer, QA, Code Critic, PR Writer','RAG search over the full codebase with ChromaDB and ONNX MiniLM embeddings','Self-correcting critic loop that rejects weak code and retries, up to 5 iterations','QA agent writes and runs pytest tests in an isolated sandbox before anything ships'],
    links:[{href:GH+'devmind/blob/main/demo.mp4',label:'DEMO VIDEO ↗'},{href:GH+'devmind',label:'GITHUB ↗'}],
    verdict:'DEMO ON FILE'}},
- {id:'chw',kind:'file',x:37,y:58.16,rot:1.5,z:24,tag:'EXHIBIT 02',title:'Community Health Worker Agent',
+ {id:'chw',kind:'file',x:68,y:55.27,rot:1,z:24,tag:'EXHIBIT 06',title:'Community Health Worker Agent',
   body:'LLM triage for Lady Health Workers’ field reports. 3 urgency tiers.',
-  dossier:{tab:'EXHIBIT 02',title:'Community Health Worker Field Report Agent',sub:'triage at the speed of inference',
+  dossier:{tab:'EXHIBIT 06',title:'Community Health Worker Field Report Agent',sub:'triage at the speed of inference',
    meta:'MO: PYTHON · STREAMLIT · GROQ API',
    facts:['Parses messy, free-text field reports into structured health data','Flags missing critical information and asks targeted follow-up questions','Classifies each case into urgent, follow-up, or routine tiers','Built for supervisors reading dozens of handwritten reports daily'],
    links:[{href:'https://chw-report-agent.streamlit.app',label:'LIVE DEMO ↗'},{href:GH+'chw-report-agent',label:'GITHUB ↗'}],
    verdict:'DEPLOYED · LIVE'}},
- {id:'innsight',kind:'file',x:68,y:56.73,rot:-1,z:26,tag:'EXHIBIT 03',title:'INNsight',
+ {id:'innsight',kind:'file',x:6,y:63.76,rot:-1.5,z:26,tag:'EXHIBIT 07',title:'INNsight',
   body:'Hotel management desktop suite with a live AI concierge. Sub-2-second replies.',
-  dossier:{tab:'EXHIBIT 03',title:'INNsight, Hotel Management System',sub:'a desktop app that talks back',
+  dossier:{tab:'EXHIBIT 07',title:'INNsight, Hotel Management System',sub:'a desktop app that talks back',
    meta:'MO: JAVAFX 21 · SQLITE · BOTPRESS · NGROK',
    facts:['Full hotel management: bookings, rooms, guests, all in a JavaFX desktop app','Live AI chatbot wired through Botpress with end-to-end booking dialogue','Sub-2-second chatbot response time','Packaged for distribution with jpackage'],
    links:[{href:GH+'innsight-hotel-management',label:'GITHUB ↗'}],
    verdict:'FULLY OPERATIONAL'}},
- {id:'citymind',kind:'file',x:6,y:67.14,rot:2,z:24,tag:'EXHIBIT 04',title:'CityMind',
+ {id:'citymind',kind:'file',x:37,y:64.85,rot:1.5,z:24,tag:'EXHIBIT 08',title:'CityMind',
   body:'5 AI algorithms, zero libraries, one living city grid.',
-  dossier:{tab:'EXHIBIT 04',title:'CityMind, AI Urban Simulation',sub:'from-scratch or nothing',
+  dossier:{tab:'EXHIBIT 08',title:'CityMind, AI Urban Simulation',sub:'from-scratch or nothing',
    meta:'MO: PYTHON · TKINTER · NO AI LIBRARIES',
    facts:['CSP zoning with backtracking, AC-3, and MRV/LCV heuristics','Genetic algorithm with Edmonds-Karp max-flow','Simulated annealing and A* routing','K-Means plus decision-tree crime prediction, all on a threaded real-time grid'],
    links:[{href:GH+'citymind-urban-intelligence',label:'GITHUB ↗'}],
    verdict:'ALL FROM SCRATCH'}},
- {id:'mario',kind:'file',x:37,y:68.45,rot:-1.5,z:22,tag:'EXHIBIT 05',title:'Mario · x86 Assembly',
+ {id:'mario',kind:'file',x:68,y:63.76,rot:-1,z:22,tag:'EXHIBIT 09',title:'Mario · x86 Assembly',
   body:'Two playable levels, moving enemies and hidden pathways. All in assembly. On purpose.',
-  dossier:{tab:'EXHIBIT 05',title:'Super Mario Bros, in x86 Assembly',sub:'done the hard way, on purpose',
+  dossier:{tab:'EXHIBIT 09',title:'Super Mario Bros, in x86 Assembly',sub:'done the hard way, on purpose',
    meta:'MO: x86 ASSEMBLY · IRVINE32',
    facts:['2 playable levels with enemy movement and hidden pathways','Bonus effects and file-based level persistence','Hand-coded in x86 assembly, with no game engine'],
    links:[{href:GH+'super-mario-assembly',label:'GITHUB ↗'}],
    verdict:'CERTIFIED INSANE'}},
- {id:'pkrusd',kind:'file',x:68,y:67.14,rot:1,z:24,tag:'EXHIBIT 06',title:'PKR/USD Predictor',
+ {id:'pkrusd',kind:'index',x:37,y:73.34,rot:1,z:24,tag:'EXHIBIT 10',title:'PKR/USD Predictor',
   body:'50 years of exchange-rate history. Random Forest R² 95.2% vs OLS 69.5%.',
-  dossier:{tab:'EXHIBIT 06',title:'PKR/USD Exchange-Rate Predictor',sub:'the ensemble beat the line by 25 points',
+  dossier:{tab:'EXHIBIT 10',title:'PKR/USD Exchange-Rate Predictor',sub:'the ensemble beat the line by 25 points',
    meta:'MO: PYTHON · RANDOM FOREST · OLS REGRESSION · REPORTLAB',
    facts:['Modeled 50 years (1975 to 2024) of PKR/USD rates on 7 macroeconomic variables','Random Forest reached R² 95.2% against the OLS baseline of 69.5%','Generated a full automated analysis report via ReportLab'],
    verdict:'EVIDENCE ON REQUEST'}},
 
  /* ---- zone 3: records ---- */
- {id:'education',kind:'manila',x:6,y:80.72,rot:1,z:34,tag:'EDUCATION RECORDS',title:'Education Records',
+ {id:'education',kind:'manila',x:6,y:84.1,rot:1,z:34,tag:'EDUCATION RECORDS',title:'Education Records',
   body:'FAST NUCES, Roots International, Cadet College Hasan Abdal. All records pulled and verified.',
   secret:{txt:'scholarship kid. earned it.',top:'24%',left:'6%'},
   dossier:{tab:'EDUCATION RECORDS',title:'Schooling: Verified',sub:'three institutions, one clean paper trail',
    meta:'SOURCES: FAST NUCES · ROOTS INTERNATIONAL · CADET COLLEGE HASAN ABDAL',
    facts:['FAST NUCES Islamabad: BS Computer Science, CGPA 3.66 (2024 to 2028)','Roots International: A-Levels on a 90% merit scholarship; basketball team captain (2022 to 2024)','Cadet College Hasan Abdal: matriculation, 2022. Dorm Commander, MUN delegate, article writer for the college magazine'],
    verdict:'RECORDS VERIFIED'}},
- {id:'honors',kind:'manila',x:37,y:80.72,rot:-1.5,z:32,tag:'COMMENDATIONS',title:'Commendations',
+ {id:'honors',kind:'manila',x:37,y:84.1,rot:-1.5,z:32,tag:'COMMENDATIONS',title:'Commendations',
   body:'Awards, certifications, and languages on record. All checked.',
   dossier:{tab:'COMMENDATIONS',title:'Awards &amp; Papers',sub:'the drawer of medals and certificates',
    meta:'SOURCES: LINKEDIN · AWARDING BODIES',
    facts:['Duke of Edinburgh Bronze Award','Best Position Papers, Abdalian MUN','90% merit scholarship, Roots International','Round Square international event participant','Certifications: Google Generative AI · Google Data Analytics · Microsoft MS-900 · Data Science Foundations · Game Development with PyGame (GUVI) · Google Fundamentals of Digital Marketing','Languages: English, Urdu, Punjabi, Hindi, German (beginner)'],
    verdict:'DECORATED'}},
- {id:'skills',kind:'manila',x:68,y:80.72,rot:-2,z:30,tag:'EVIDENCE BAG',title:'The Toolbox',
+ {id:'skills',kind:'manila',x:68,y:84.1,rot:-2,z:30,tag:'EVIDENCE BAG',title:'The Toolbox',
   body:'Recovered instruments. Fingerprints everywhere.',
   dossier:{tab:'EVIDENCE BAG',title:'Recovered Instruments',sub:'each one shows heavy use',
    meta:'ANALYSIS COMPLETE · OCT 2026',
@@ -640,7 +668,7 @@ const items=[
    verdict:'PRINTS MATCH'}},
 
  /* ---- tip line ---- */
- {id:'contact',kind:'tipline',x:38,y:88.17,rot:-1,z:36,
+ {id:'contact',kind:'tipline',x:38,y:90.24,rot:-1,z:36,
   secret:{txt:'he replies fast. try it.',top:'6%',left:'4%'},
   dossier:{tab:'TIP LINE',title:'Call It In',sub:'lines open. reward: one very good engineer.',
    meta:'RESPONSE TIME: UNDER 1 DAY · ALL TIPS READ PERSONALLY',
@@ -651,8 +679,10 @@ const items=[
 const links=[
  ['suspect','octathorn'],['suspect','pmw'],['suspect','jcoderz',true],['suspect','motive',true],
  ['suspect','devdens',true],['suspect','resume',true],
- ['octathorn','devmind'],['octathorn','chw',true],['pmw','citymind',true],
- ['devmind','chw'],['mario','pkrusd',true],
+ ['devdens','voice'],['devdens','sec',true],['devdens','devmate',true],
+ ['voice','sec'],['sec','devmate'],['devmate','mcp',true],
+ ['octathorn','devmind'],['devmind','chw'],['chw','innsight',true],
+ ['pmw','citymind',true],['mario','pkrusd',true],
  ['suspect','education',true],['education','honors',true],['honors','skills',true],['skills','contact'],['pkrusd','contact',true]
 ];
 
@@ -701,8 +731,8 @@ ZONES.forEach(z=>{
 });
 /* position the hidden UV-lamp switch */
 (function decor(){
-  const hy=document.getElementById('hypno');hy.style.left='89%';hy.style.top='1.75%';
-  const ht=document.getElementById('hypnotag');ht.style.left='87.5%';ht.style.top='5.37%';
+  const hy=document.getElementById('hypno');hy.style.left='89%';hy.style.top='1.44%';
+  const ht=document.getElementById('hypnotag');ht.style.left='87.5%';ht.style.top='4.43%';
 })();
 
 /* pin-drop when board first enters view */
