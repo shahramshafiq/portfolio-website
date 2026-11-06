@@ -534,8 +534,8 @@ const items=[
    facts:['Summer 2026: completed two industry internships in the same summer','AI Automation Intern at Octathorn Pvt. Ltd., Rawalpindi','AI 3D Reconstruction Intern at PreserveMy.World × TechRealm, Remote','Junior AI Engineer since Aug 2026: real-time voice agents (Twilio, Gemini Live), LLM apps, RAG, AI agents, MCP servers and system design','STEM Trainer at Junior Coderz since Mar 2026, teaching kids aged 6 to 16','Speaks English, Urdu, Punjabi, Hindi, and beginner German'],
    links:[{href:'https://www.linkedin.com/in/shahramshafiq/',label:'LINKEDIN ↗'},{href:'https://github.com/shahramshafiq',label:'GITHUB ↗'}],
    verdict:'HIGHLY MOTIVATED'}},
- {id:'motive',kind:'note',x:23,y:4.23,rot:3,z:40,noteHtml:'motive?<br>"simple &gt; clever.<br>ship it, verify it."'},
- {id:'uvnote',kind:'note',x:62,y:4.7,rot:-2,z:40,noteHtml:'some notes here are in invisible ink.<br><b>find the UV lamp.</b>'},
+ {id:'motive',kind:'note',x:20,y:4.23,rot:3,z:40,noteHtml:'motive?<br>"simple &gt; clever.<br>ship it, verify it."'},
+ {id:'uvnote',kind:'note',x:65,y:4.7,rot:-2,z:40,noteHtml:'some notes here are in invisible ink.<br><b>find the UV lamp.</b>'},
  {id:'resume',kind:'manila',x:38,y:9.87,rot:2,z:38,tag:'OFFICIAL RECORD',title:'My Resume',
   body:'One page, no fluff. Click to pull the full case file.',
   directPdf:'resume.pdf'},
@@ -767,6 +767,7 @@ function drawStrings(){
   svg.innerHTML=html;
 }
 addEventListener('resize',drawStrings);
+matchMedia('(max-width:1080px)').addEventListener('change',drawStrings);
 addEventListener('load',()=>{drawStrings();setTimeout(drawStrings,400);setTimeout(drawStrings,1500)});
 if('ResizeObserver' in window)new ResizeObserver(()=>drawStrings()).observe(board);
 requestAnimationFrame(drawStrings);
